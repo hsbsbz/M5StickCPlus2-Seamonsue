@@ -1,0 +1,3 @@
+{
+    "C_Cpp.clang_format_style": "{AllowShortCaseLabelsOnASingleLine: true, AllowShortIfStatementsOnASingleLine: true, ColumnLimit: 0, BasedOnStyle: LLVM, BreakBeforeBraces: Attach }"
+}
