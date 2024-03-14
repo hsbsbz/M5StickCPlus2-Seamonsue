@@ -12,8 +12,8 @@ M5StickC Plus2
 
 ## Installation Method
 1. Install the Arduino IDE.
-2. Download `arduino_seamonsue.zip`.
-3. Unzip the downloaded `arduino_seamonsue.zip` and open `seamonsue.ino` with Arduino IDE.
+2. Download [arduino_seamonsue.zip](https://github.com/hsbsbz/M5StickCPlus2-Seamonsue/raw/master/arduino_seamonsue.zip).
+3. Unzip the downloaded [arduino_seamonsue.zip](https://github.com/hsbsbz/M5StickCPlus2-Seamonsue/raw/master/arduino_seamonsue.zip) and open `seamonsue.ino` with Arduino IDE.
 4. Select the M5StickCPlus2 board.
 5. Build the project and upload it to the device. (This may take some time)
 
@@ -41,7 +41,7 @@ Avoid the fish and get the hearts.
 - Press the C button to interrupt the game and return to the home screen
 
 
-## screenshot
+## Screenshot
 
 ![screenshot](screenshot/0.png)
 ![screenshot](screenshot/1.png)
