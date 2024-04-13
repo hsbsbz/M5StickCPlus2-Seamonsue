@@ -4,6 +4,10 @@
 namespace hsbs {
 
 void M5ToneSoundManager::pushTone(float frequency, int duration, int channel) {
+  if (this->muted) {
+    this->pushWait(duration);
+    return;
+  }
   M5ToneSoundQueue *queue = new M5ToneSoundQueue();
   queue->frequency = frequency;
   queue->duration = duration;

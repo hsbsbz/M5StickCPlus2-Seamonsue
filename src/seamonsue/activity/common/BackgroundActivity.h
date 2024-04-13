@@ -21,6 +21,10 @@ private:
    * バッテリーの矩形
    */
   hsbs::Canvas *_batteryCanvas;
+  /**
+   * 音アイコン
+   */
+  hsbs::Bitmap565 *_soundBitmap;
 
 protected:
   //------------------------------
@@ -33,6 +37,10 @@ protected:
     // 背景画像を生成
     this->_bgBitmap = new hsbs::Bitmap565(Img::Rgb565::bg, Img::Rgb565::bgWidth, Img::Rgb565::bgHeight);
     this->stage.addChild(this->_bgBitmap);
+    // 音アイコンを生成
+    this->_soundBitmap = new hsbs::Bitmap565(Img::Rgb565::icon_sound, Img::Rgb565::icon_soundWidth, Img::Rgb565::icon_soundHeight);
+    this->_soundBitmap->setPosition(10, 6);
+    this->stage.addChild(this->_soundBitmap);
     // バッテリー
     this->_batteryCanvas = new hsbs::Canvas(1, 1);
     this->_batteryCanvas->canvas.setColorDepth(1);
@@ -44,6 +52,8 @@ protected:
    * 非アクティブ時
    */
   void onDeactive() override {
+    this->stage.removeChild(this->_soundBitmap);
+    delete this->_soundBitmap;
     this->stage.removeChild(this->_bgBitmap);
     delete this->_bgBitmap;
     this->stage.removeChild(this->_batteryCanvas);
@@ -58,6 +68,8 @@ protected:
     if (globalTicker.checkInterval(3000)) {
       this->_batteryCanvas->scaleX = StickCP2.Power.getBatteryLevel() * 0.2;
     }
+    // 音アイコン
+    this->_soundBitmap->visible = !gameStore.getMuted();
   }
 };
 

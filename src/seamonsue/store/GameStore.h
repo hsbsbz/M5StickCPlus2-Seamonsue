@@ -40,6 +40,11 @@ private:
    */
   GameState _gameState;
 
+  /**
+   * @brief 音のミュート状態
+   */
+  bool _muted;
+
 public:
   //------------------------------
   // Public
@@ -50,6 +55,13 @@ public:
    * @return GameState
    */
   GameState getGameState();
+
+  /**
+   * @brief 音のミュート状態
+   *
+   * @return bool
+   */
+  bool getMuted();
 
   /**
    * @brief ストレージからデータを読み出す
@@ -65,6 +77,12 @@ public:
    * @brief タイトルから育成を開始する
    */
   void startGame();
+
+  /**
+   * @brief 音のミュート状態を切り替える
+   * 
+   */
+  void toggleMute();
 
   /**
    * @brief しんでる

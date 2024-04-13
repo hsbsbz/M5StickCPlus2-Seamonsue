@@ -24,7 +24,7 @@ protected:
    */
   void onActive() override {
     this->_bitmap = new hsbs::Bitmap565(Img::Rgb565::icon_food, Img::Rgb565::icon_foodWidth, Img::Rgb565::icon_foodHeight);
-    this->_bitmap->setPosition(3, 88);
+    this->_bitmap->setPosition(4, 93);
     this->stage.addChild(this->_bitmap);
   }
 

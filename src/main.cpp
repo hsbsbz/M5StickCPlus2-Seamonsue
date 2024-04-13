@@ -81,6 +81,15 @@ void setup() {
     petStore.save();
   });
 
+  // Aボタン長押しでミュート切り替え
+  app.registerEvent(hsbs::EVENT_BUTTON_LONG_PRESS_A, []() {
+    if (app.getPath().equals("/home/")) {// ホーム画面
+      gameStore.toggleMute();// トグルミュート
+      soundUtil.muted = gameStore.getMuted();
+      soundUtil.pressButton();
+    }
+  });
+
   // Bボタン長押しでリセット画面
   app.registerEvent(hsbs::EVENT_BUTTON_LONG_PRESS_B, []() {
     soundUtil.pressButton();
@@ -131,6 +140,7 @@ void setup() {
   if (petStore.isDead()) {
     gameStore.dead();
   }
+  soundUtil.muted = gameStore.getMuted();// ミュートの状態を反映
   // 画面を切り替えてアプリを開始
   switch (gameStore.getGameState()) {
   case seamonsue::TITLE: app.go("/title"); break; // タイトル画面

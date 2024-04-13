@@ -60,6 +60,11 @@ public:
   // Public
   //------------------------------
   /**
+   * @brief ミュート
+   */
+  bool muted = false;
+
+  /**
    * @brief トーン音を追加
    *
    * @param frequency 周波数

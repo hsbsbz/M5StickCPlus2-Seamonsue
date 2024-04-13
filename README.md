@@ -26,6 +26,7 @@ If no operation is performed for a certain period of time, it will automatically
 ### Home Screen
 - Press the A button to confirm the menu
 - Press the B button to switch the menu
+- Long press the A button to toggle mute sound
 - Long press the B button to go to the reset screen
 - Press the C button to cancel the menu selection
 
