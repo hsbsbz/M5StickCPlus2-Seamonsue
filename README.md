@@ -20,28 +20,38 @@ M5StickC Plus2
 ## How to Operate
 
 ### Common to All Screens
-- Long press the C button to sleep
-If no operation is performed for a certain period of time, it will automatically go to sleep.
+- Long press the C button to put the device to sleep.
+- If no operation is performed for a certain period, the device will automatically go to sleep.
 
 ### Home Screen
-- Press the A button to confirm the menu
-- Press the B button to switch the menu
-- Long press the A button to toggle mute sound
-- Long press the B button to go to the reset screen
-- Press the C button to cancel the menu selection
+- Press the A button to go to the clock screen.
+- Press the A button to confirm the menu selection (if a menu item is selected).
+- Press the B button to switch between menu items.
+- Long press the A button to toggle the sound on or off.
+- Long press the B button to navigate to the reset screen.
+- Press the C button to cancel the menu selection.
+
+### Clock Screen
+- Press the A button to return to the home screen.
+- Press the B button to return to the home screen.
+- Press buttons A and B simultaneously to edit the time.
+
+### Clock Edit Screen
+- Tilt the device to change the time.
+- Press the A button to exit editing.
+- Press the B button to exit editing.
+- Press the C button to exit editing.
 
 ### Parameter Screen
-- Press the A button to switch the page
-- Press the B button to switch the page
-- Long press the B button to go to the reset screen
-- Press the C button to cancel the menu selection
+- Press the A button to switch the page.
+- Press the B button to switch the page.
+- Long press the B button to go to the reset screen.
+- Press the C button to cancel the menu selection.
 
 ### Game Screen
-Avoid the fish and get the hearts.
-- Tilt the device to move Seamonsue
-- Press the C button to interrupt the game and return to the home screen
-
-
+Avoid the fish and collect the hearts.
+- Tilt the device to move Seamonsue.
+- Press the C button to interrupt the game and return to the home screen.
 ## Screenshot
 
 ![screenshot](screenshot/0.png)
