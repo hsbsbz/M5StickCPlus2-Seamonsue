@@ -66,23 +66,23 @@ protected:
   }
 
   /**
-   * Aボタン押下
+   * Aボタンをリリース
    */
-  void onPressButtonA() override {
+  void onReleaseButtonA() override {
     this->_enter();
   }
 
   /**
-   * Bボタン押下
+   * Bボタンをリリース
    */
-  void onPressButtonB() override {
+  void onReleaseButtonB() override {
     this->_enter();
   }
 
   /**
-   * Cボタン押下
+   * Cボタンをリリース
    */
-  void onPressButtonC() override {
+  void onReleaseButtonC() override {
     this->_enter();
   }
 };
