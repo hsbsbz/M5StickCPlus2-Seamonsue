@@ -97,7 +97,7 @@ void setup() {
 
   // Bボタン長押しでリセット画面
   app.registerEvent(hsbs::EVENT_BUTTON_LONG_PRESS_B, []() {
-    if (app.getPath().equals("/clock/")) {// 時計画面
+    if (app.getPath().equals("/clock/edit/")) {// 時計編集画面
       return;
     }
     soundUtil.pressButton();
