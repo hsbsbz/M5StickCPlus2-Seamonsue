@@ -145,7 +145,7 @@ void setup() {
   petStore.updateEvolutionCount(timeStore.getTotalSec()); // 総時間から進化
   petStore.updatePetParams(timeStore.getElapsedSec());    // スリープ中の経過時間を消化
   timeStore.resetElapsedSec();
-  if (petStore.isDead()) {
+  if (gameStore.getGameState() == seamonsue::PLAY && petStore.isDead()) {
     gameStore.dead();
   }
   soundUtil.muted = gameStore.getMuted();// ミュートの状態を反映
