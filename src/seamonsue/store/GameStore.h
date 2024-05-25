@@ -43,7 +43,7 @@ private:
   /**
    * @brief 音のミュート状態
    */
-  bool _muted;
+  bool _muted = false;
 
   /**
    * @brief 時計表示の状態

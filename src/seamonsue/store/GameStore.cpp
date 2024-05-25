@@ -6,7 +6,7 @@ namespace seamonsue {
 void GameStore::restore() {
   this->_preferences.begin(this->_namespace, true);
   this->_gameState = (GameState)this->_preferences.getInt("game_state", (int)TITLE);
-  this->_muted = this->_preferences.getBool("muted", false);
+  this->_muted = this->_preferences.getBool("muted", this->_muted);
   this->_clockMode = this->_preferences.getBool("clock_mode", false);
   this->_preferences.end();
 }
