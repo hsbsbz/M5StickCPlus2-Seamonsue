@@ -45,6 +45,11 @@ private:
    */
   bool _muted;
 
+  /**
+   * @brief 時計表示の状態
+   */
+  bool _clockMode;
+
 public:
   //------------------------------
   // Public
@@ -62,6 +67,13 @@ public:
    * @return bool
    */
   bool getMuted();
+
+  /**
+   * @brief 時計表示の状態
+   *
+   * @return bool
+   */
+  bool getClockMode();
 
   /**
    * @brief ストレージからデータを読み出す
@@ -83,6 +95,12 @@ public:
    * 
    */
   void toggleMute();
+  
+  /**
+   * @brief 時計表示の状態を切り替える
+   * 
+   */
+  void toggleClockMode();
 
   /**
    * @brief しんでる
