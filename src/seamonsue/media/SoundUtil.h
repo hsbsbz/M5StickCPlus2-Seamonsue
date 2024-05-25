@@ -42,6 +42,27 @@ public:
   }
 
   /**
+   * 時計の編集開始の音
+   */
+  void startClockEdit() {
+    this->stop();
+    this->pushTone(4186.01, 100);
+    this->pushTone(4698.64, 100);
+  }
+
+  /**
+   * 時計の編集終了の音
+   */
+  void endClockEdit() {
+    this->stop();
+    this->pushTone(10548.08, 100); // ９オクターブのド
+    this->pushTone(7902.13, 100);  // ８オクターブのシ
+    this->pushWait(10);
+    this->pushTone(6271.93, 100); // ８オクターブのソ
+    this->pushTone(4698.64, 100); // ８オクターブのレ
+  }
+
+  /**
    * 食べるときの音
    */
   void eat() {
