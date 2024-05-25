@@ -19,6 +19,11 @@ private:
    */
   MonsBitmap *_monsBitmap;
 
+  /**
+   * @brief ミュートの状態をバックアップしておく変数
+   */
+  bool _bkMuted;
+
 protected:
   //------------------------------
   // Protected
@@ -46,6 +51,29 @@ protected:
    */
   void onEnterFrame() override {
     this->_monsBitmap->update(); // フレームを更新
+  }
+
+  
+  /**
+   * Aボタン押下
+   */
+  void onPressButtonA() override {
+    this->_bkMuted = gameStore.getMuted();
+  }
+
+  
+  /**
+   * Aボタン押下
+   */
+  void onReleaseButtonA() override {
+    if (this->isExact()) { // パスの完全一致
+      if (this->_bkMuted != gameStore.getMuted()) {
+        // 長押しでミュートの切り替えがあったら何もしない
+        return;
+      }
+      soundUtil.pressButton();
+      this->go("/clock");
+    }
   }
 
   /**

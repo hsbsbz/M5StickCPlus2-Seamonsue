@@ -15,6 +15,8 @@
 #include "seamonsue/activity/menu/MenuInfoActivity.h"
 #include "seamonsue/activity/reset/ResetActivity.h"
 #include "seamonsue/activity/title/TitleActivity.h"
+#include "seamonsue/activity/clock/ClockActivity.h"
+#include "seamonsue/activity/clock/ClockEditActivity.h"
 #include "seamonsue/data/MonsData.h"
 #include "seamonsue/global.h"
 #include <Arduino.h>
@@ -50,6 +52,9 @@ void setup() {
   app.add("/home/food", new seamonsue::MenuFoodActivity());   // 食事アイコンフォーカス時
   app.add("/home/game", new seamonsue::MenuGameActivity());   // ゲームアイコンフォーカス時
   app.add("/home/clean", new seamonsue::MenuCleanActivity()); // 掃除アイコンフォーカス時
+  
+  app.add("/clock", new seamonsue::ClockActivity()); // 時計画面
+  app.add("/clock/edit", new seamonsue::ClockEditActivity()); // 時計編集画面
 
   app.add("/info", new seamonsue::MenuInfoActivity());    // 情報アイコン
   app.add("/info/page1", new seamonsue::InfoActivity1()); // 年齢・食事
@@ -83,7 +88,7 @@ void setup() {
 
   // Aボタン長押しでミュート切り替え
   app.registerEvent(hsbs::EVENT_BUTTON_LONG_PRESS_A, []() {
-    if (app.getPath().equals("/home/")) {// ホーム画面
+    if (app.getPath().equals("/home/") || app.getPath().equals("/clock/")) {// ホーム画面
       gameStore.toggleMute();// トグルミュート
       soundUtil.muted = gameStore.getMuted();
       soundUtil.pressButton();
@@ -92,6 +97,9 @@ void setup() {
 
   // Bボタン長押しでリセット画面
   app.registerEvent(hsbs::EVENT_BUTTON_LONG_PRESS_B, []() {
+    if (app.getPath().equals("/clock/")) {// 時計画面
+      return;
+    }
     soundUtil.pressButton();
     app.go("/reset");
   });
@@ -144,7 +152,7 @@ void setup() {
   // 画面を切り替えてアプリを開始
   switch (gameStore.getGameState()) {
   case seamonsue::TITLE: app.go("/title"); break; // タイトル画面
-  case seamonsue::PLAY: app.go("/home"); break;   // 育成画面
+  case seamonsue::PLAY: app.go(gameStore.getClockMode() ? "/clock" : "/home"); break;   // 育成画面
   case seamonsue::DEAD: app.go("/dead"); break;   // お墓画面
   }
 }
