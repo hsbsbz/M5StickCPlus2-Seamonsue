@@ -11,7 +11,7 @@ void TimeStore::restore() {
   this->_gameStartTimeStamp = this->_preferences.getULong("start", now);
   this->_sleepTimeStamp = this->_preferences.getULong("sleep", now);
   this->_elapsedSec = this->_preferences.getULong("elapsed", 0);
-  this->_clockOffsetSec = this->_preferences.getInt("clock", 0);
+  this->_clockOffsetSec = this->_preferences.getInt("clock", this->_clockOffsetSec);
   this->_preferences.end();
   this->_wakeupTimeStamp = now;
   this->_lastTimeStamp = now;

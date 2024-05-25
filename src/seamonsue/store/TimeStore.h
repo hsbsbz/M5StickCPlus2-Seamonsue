@@ -46,7 +46,7 @@ private:
    * @brief 時刻合わせオフセット(sec)
    *
    */
-  int _clockOffsetSec;
+  int _clockOffsetSec = 0;
 
   /**
    * 現在時刻
