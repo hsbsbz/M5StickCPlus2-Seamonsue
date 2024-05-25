@@ -43,22 +43,42 @@ private:
   long _elapsedSec;
 
   /**
+   * @brief 時刻合わせオフセット(sec)
+   *
+   */
+  int _clockOffsetSec;
+
+  /**
    * 現在時刻
    */
   unsigned long getNow();
 
 public:
   /**
+   * @brief 時刻合わせオフセットの値を追加(sec)
+   *
+   * @return int
+   */
+  int appendClockSec(int deltaSec);
+
+  /**
+   * @brief 時刻合わせオフセット値を取得(sec)
+   *
+   * @return int
+   */
+  int getClockSec();
+
+  /**
    * @brief 総プレイ時間(sec)
    *
-   * @return long
+   * @return unsigned long
    */
   unsigned long getTotalSec();
 
   /**
    * @brief 経過時間(sec)
    *
-   * @return long
+   * @return unsigned long
    */
   unsigned long getElapsedSec();
 

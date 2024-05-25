@@ -11,6 +11,7 @@ void TimeStore::restore() {
   this->_gameStartTimeStamp = this->_preferences.getULong("start", now);
   this->_sleepTimeStamp = this->_preferences.getULong("sleep", now);
   this->_elapsedSec = this->_preferences.getULong("elapsed", 0);
+  this->_clockOffsetSec = this->_preferences.getInt("clock", 0);
   this->_preferences.end();
   this->_wakeupTimeStamp = now;
   this->_lastTimeStamp = now;
@@ -29,7 +30,19 @@ void TimeStore::save() {
   this->_preferences.putULong("start", this->_gameStartTimeStamp);
   this->_preferences.putULong("sleep", now);
   this->_preferences.putULong("elapsed", this->_elapsedSec);
+  this->_preferences.putInt("clock", this->_clockOffsetSec);
   this->_preferences.end();
+}
+
+int TimeStore::appendClockSec(int deltaSec) {
+  this->_clockOffsetSec += deltaSec;
+  if (this->_clockOffsetSec < 0) this->_clockOffsetSec += 86400;
+  this->_clockOffsetSec = this->_clockOffsetSec % 86400;
+  return this->_clockOffsetSec;
+}
+
+int TimeStore::getClockSec() {
+  return this->getTotalSec() + this->_clockOffsetSec;
 }
 
 unsigned long TimeStore::getTotalSec() {
