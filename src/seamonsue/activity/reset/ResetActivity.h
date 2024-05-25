@@ -132,12 +132,13 @@ protected:
   /**
    * Aボタン押下
    */
-  void onPressButtonA() override {
+  void onReleaseButtonA() override {
     if (this->_selectedIndex == 0) {
       soundUtil.pressButton();
       this->gotoHome();
     } else {
-      gameStore.clear();
+      gameStore.clear();  
+      soundUtil.muted = gameStore.getMuted();// ミュートの状態を反映
       this->go("/title");
     }
   }
@@ -153,7 +154,7 @@ protected:
   /**
    * Cボタン押下
    */
-  void onPressButtonC() override {
+  void onReleaseButtonC() override {
     soundUtil.pressButton();
     this->gotoHome();
   }
