@@ -42,18 +42,18 @@ protected:
   }
 
   /**
-   * Aボタンを押下
+   * Aボタンをリリース
    */
-  void onPressButtonA() override {
+  void onReleaseButtonA() override {
     // ゲームをリセットしてタイトルへ
     soundUtil.pressButton();
     this->go("/reset");
   }
 
   /**
-   * Bボタンを押下
+   * Bボタンをリリース
    */
-  void onPressButtonB() override {
+  void onReleaseButtonB() override {
     // ゲームをリセットしてタイトルへ
     soundUtil.pressButton();
     this->go("/reset");
