@@ -1,6 +1,8 @@
 #include "hsbs/app/M5StickCPlust2App.h"
 #include "seamonsue/activity/DebugActivity.h"
 #include "seamonsue/activity/clean/CleanActivity.h"
+#include "seamonsue/activity/clock/ClockActivity.h"
+#include "seamonsue/activity/clock/ClockEditActivity.h"
 #include "seamonsue/activity/common/BackgroundActivity.h"
 #include "seamonsue/activity/common/HappyActivity.h"
 #include "seamonsue/activity/dead/DeadActivity.h"
@@ -15,8 +17,6 @@
 #include "seamonsue/activity/menu/MenuInfoActivity.h"
 #include "seamonsue/activity/reset/ResetActivity.h"
 #include "seamonsue/activity/title/TitleActivity.h"
-#include "seamonsue/activity/clock/ClockActivity.h"
-#include "seamonsue/activity/clock/ClockEditActivity.h"
 #include "seamonsue/data/MonsData.h"
 #include "seamonsue/global.h"
 #include <Arduino.h>
@@ -52,8 +52,8 @@ void setup() {
   app.add("/home/food", new seamonsue::MenuFoodActivity());   // 食事アイコンフォーカス時
   app.add("/home/game", new seamonsue::MenuGameActivity());   // ゲームアイコンフォーカス時
   app.add("/home/clean", new seamonsue::MenuCleanActivity()); // 掃除アイコンフォーカス時
-  
-  app.add("/clock", new seamonsue::ClockActivity()); // 時計画面
+
+  app.add("/clock", new seamonsue::ClockActivity());          // 時計画面
   app.add("/clock/edit", new seamonsue::ClockEditActivity()); // 時計編集画面
 
   app.add("/info", new seamonsue::MenuInfoActivity());    // 情報アイコン
@@ -88,8 +88,8 @@ void setup() {
 
   // Aボタン長押しでミュート切り替え
   app.registerEvent(hsbs::EVENT_BUTTON_LONG_PRESS_A, []() {
-    if (app.getPath().equals("/home/") || app.getPath().equals("/clock/")) {// ホーム画面
-      gameStore.toggleMute();// トグルミュート
+    if (app.getPath().equals("/home/") || app.getPath().equals("/clock/")) { // ホーム画面
+      gameStore.toggleMute();                                                // トグルミュート
       soundUtil.muted = gameStore.getMuted();
       soundUtil.pressButton();
     }
@@ -97,7 +97,7 @@ void setup() {
 
   // Bボタン長押しでリセット画面
   app.registerEvent(hsbs::EVENT_BUTTON_LONG_PRESS_B, []() {
-    if (app.getPath().equals("/clock/edit/")) {// 時計編集画面
+    if (app.getPath().equals("/clock/edit/")) { // 時計編集画面
       return;
     }
     soundUtil.pressButton();
@@ -108,7 +108,7 @@ void setup() {
   app.registerEvent(hsbs::EVENT_ENTER_FRAME, []() {
     soundUtil.update();
     globalTicker.update();
-    if (app.getPath().indexOf("/home") == 0) {
+    if (app.getPath().indexOf("/home") == 0 || app.getPath().indexOf("/clock") == 0) {
       // ホーム画面の時に更新
       timeStore.update();
       petStore.updateEvolutionCount(timeStore.getTotalSec());
@@ -117,7 +117,7 @@ void setup() {
         petStore.updatePetParams(timeStore.getElapsedSec());
         timeStore.resetElapsedSec();
         // しんでたらお墓画面へ
-        if (petStore.isDead()) {
+        if (gameStore.getGameState() == seamonsue::PLAY && petStore.isDead()) {
           gameStore.dead();
           app.go("/dead");
         }
@@ -148,20 +148,19 @@ void setup() {
   if (gameStore.getGameState() == seamonsue::PLAY && petStore.isDead()) {
     gameStore.dead();
   }
-  soundUtil.muted = gameStore.getMuted();// ミュートの状態を反映
+  soundUtil.muted = gameStore.getMuted(); // ミュートの状態を反映
   // 画面を切り替えてアプリを開始
   switch (gameStore.getGameState()) {
-  case seamonsue::TITLE: app.go("/title"); break; // タイトル画面
-  case seamonsue::PLAY: app.go(gameStore.getClockMode() ? "/clock" : "/home"); break;   // 育成画面
-  case seamonsue::DEAD: app.go("/dead"); break;   // お墓画面
+  case seamonsue::TITLE: app.go("/title"); break;                                     // タイトル画面
+  case seamonsue::PLAY: app.go(gameStore.getClockMode() ? "/clock" : "/home"); break; // 育成画面
+  case seamonsue::DEAD: app.go("/dead"); break;                                       // お墓画面
   }
 }
 
-
 /**
  * @brief デバッグ用のコマンド
- * 
- * @param str 
+ *
+ * @param str
  */
 void applyDebugCommand(String str) {
   int spaceIndex = str.indexOf(' ');
