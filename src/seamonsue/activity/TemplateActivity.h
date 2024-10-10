@@ -37,7 +37,8 @@ public:
   virtual void onLongPressButtonB() override {}
   virtual void onLongPressButtonC() override {}
 
-  virtual void onSleepBefore() override {}
+  // スリープ直前
+  virtual void onBeforeSleep() override {}
 };
 
 } // namespace seamonsue

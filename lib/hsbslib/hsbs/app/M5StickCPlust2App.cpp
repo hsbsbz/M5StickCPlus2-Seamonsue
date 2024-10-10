@@ -140,7 +140,7 @@ void M5StickCPlust2App::sleepNow() {
   for (int i = 0; i < length; i++) {
     M5StickCPlust2Activity *activity = static_cast<M5StickCPlust2Activity *>(this->activityList.getAt(i));
     if (activity->visiblity()) {
-      activity->onSleepBefore();
+      activity->onBeforeSleep();
     }
   }
   this->dispatchEvent(EVENT_BEFORE_SLEEP);

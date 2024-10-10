@@ -68,7 +68,7 @@ public:
   /**
    * @brief スリープ直前の処理
    */
-  virtual void onSleepBefore() {}
+  virtual void onBeforeSleep() {}
 };
 
 } // namespace hsbs
