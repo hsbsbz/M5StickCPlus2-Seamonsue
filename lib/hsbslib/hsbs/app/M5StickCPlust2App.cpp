@@ -105,13 +105,13 @@ void M5StickCPlust2App::update() {
   // イベントを発火
   this->dispatchEvent(EVENT_ENTER_FRAME);
 
-  // update 終了時刻
-  unsigned long endTimestamp = micros();
-
   // オフスクリーンレンダリング
   this->draw();
   // スクリーンに描画
   this->renderScreen();
+
+  // update 終了時刻
+  unsigned long endTimestamp = micros();
 
   // 経過時間
   unsigned int delta = (endTimestamp - beginTimestamp);

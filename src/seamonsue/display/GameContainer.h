@@ -125,7 +125,7 @@ public:
 
     // プレイヤーの位置を更新
     int xMax = maxWidth - Img::Mono::game_player0Width;
-    this->playerVelocity = data.accel.y * 20;
+    this->playerVelocity = data.accel.y * 15;
     this->_playerRect->x += this->playerVelocity;
     this->_playerRect->x = this->_playerRect->x < 0 ? 0 : this->_playerRect->x;
     this->_playerRect->x = this->_playerRect->x > xMax ? xMax : this->_playerRect->x;
@@ -143,12 +143,12 @@ public:
     for (int i = this->_fishList.length() - 1; i >= 0; i--) {
       hsbs::Rectangle *fish = this->_fishList.getAt(i);
 
-      fish->y += 2;
+      fish->y += 1.6;
 
       if (this->hitTest(this->_playerRect, fish, 3)) {
         // プレイヤーと衝突
         this->value = 0;
-        this->waitCount = 15;
+        this->waitCount = 18;
         soundUtil.gameHitFish();
         this->removeHeartAndFish();
       } else if (fish->y > maxHeight) {
@@ -162,13 +162,13 @@ public:
     for (int i = this->_heartList.length() - 1; i >= 0; i--) {
       hsbs::Rectangle *heart = this->_heartList.getAt(i);
 
-      heart->y += 2;
+      heart->y += 1.6;
 
       if (this->hitTest(this->_playerRect, heart, 2)) {
         // プレイヤーと衝突
         ++this->value;
         if (this->value == 5) {
-          this->waitCount = 15;
+          this->waitCount = 20;
         }
         soundUtil.gameHitHeart();
         this->_heartList.remove(heart);
