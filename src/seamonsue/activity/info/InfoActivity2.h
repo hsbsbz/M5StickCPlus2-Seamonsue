@@ -3,6 +3,7 @@
 
 #include "../../../image_progmem.h"
 #include "../../display/NikoNikoBitmap.h"
+#include "../../display/PagerContainer.h"
 #include "../../global.h"
 #include "hsbs/app/M5StickCPlust2Activity.h"
 
@@ -19,6 +20,7 @@ private:
   hsbs::BitmapMono *_cleanBitmap;
   hsbs::BitmapMono *_cleanDotBitmap;
   NikoNikoBitmap *_cleanValueBitmap;
+  PagerContainer * _pager;
 
 public:
   //------------------------------
@@ -33,8 +35,8 @@ public:
     int x2 = 34 + (4 * 20);
     int x3 = 34 + (4 * 28);
 
-    int y1 = (4 * 4);
-    int y2 = (4 * 20);
+    int y1 = (4 * 3);
+    int y2 = (4 * 16);
 
     this->_gameBitmap = new hsbs::BitmapMono(Img::Mono::info_game, Img::Mono::info_gameWidth, Img::Mono::info_gameHeight);
     this->_gameBitmap->setPosition(x1, y1)->setScale(4, 4);
@@ -59,6 +61,9 @@ public:
     this->_cleanValueBitmap = new NikoNikoBitmap();
     this->_cleanValueBitmap->setValue(std::ceil(petStore.getPretty()))->setPosition(x3, y2)->setScale(4, 4);
     this->stage.addChild(this->_cleanValueBitmap);
+    
+    this->_pager = new PagerContainer(3, 2);
+    this->stage.addChild(this->_pager);
   }
 
   /**
@@ -77,6 +82,8 @@ public:
     delete this->_cleanDotBitmap;
     this->stage.removeChild(this->_cleanValueBitmap);
     delete this->_cleanValueBitmap;
+    this->stage.removeChild(this->_pager);
+    delete this->_pager;
   }
 
   /**
@@ -94,7 +101,7 @@ public:
     if (this->isExact()) { // パスの完全一致
       soundUtil.pressButton();
       // 1ページ目へ
-      this->go("/info/page1");
+      this->go("/info/page3");
     }
   }
 
@@ -105,7 +112,7 @@ public:
     if (this->isExact()) { // パスの完全一致
       soundUtil.pressButton();
       // 1ページ目へ
-      this->go("/info/page1");
+      this->go("/info/page3");
     }
   }
 

@@ -3,6 +3,7 @@
 
 #include "../../../image_progmem.h"
 #include "../../display/NikoNikoBitmap.h"
+#include "../../display/PagerContainer.h"
 #include "../../global.h"
 #include "hsbs/app/M5StickCPlust2Activity.h"
 #include "hsbs/display/BitmapMono.h"
@@ -22,6 +23,7 @@ private:
   hsbs::BitmapMono *_foodBitmap;
   hsbs::BitmapMono *_foodDotBitmap;
   NikoNikoBitmap *_foodValueBitmap;
+  PagerContainer * _pager;
 
 protected:
   //------------------------------
@@ -36,8 +38,8 @@ protected:
     int x2 = 34 + (4 * 20);
     int x3 = 34 + (4 * 28);
 
-    int y1 = (4 * 4);
-    int y2 = (4 * 20);
+    int y1 = (4 * 3);
+    int y2 = (4 * 16);
 
     this->_ageBitmap = new hsbs::BitmapMono(Img::Mono::info_age, Img::Mono::info_ageWidth, Img::Mono::info_ageHeight);
     this->_ageBitmap->setPosition(x1 - (4 * 2), y1 + (4 * 3))->setScale(4, 4);
@@ -69,6 +71,9 @@ protected:
     this->_foodValueBitmap = new NikoNikoBitmap();
     this->_foodValueBitmap->setValue(std::ceil(petStore.getFullup()))->setPosition(x3, y2)->setScale(4, 4);
     this->stage.addChild(this->_foodValueBitmap);
+
+    this->_pager = new PagerContainer(3, 1);
+    this->stage.addChild(this->_pager);
   }
 
   /**
@@ -87,6 +92,8 @@ protected:
     delete this->_foodDotBitmap;
     this->stage.removeChild(this->_foodValueBitmap);
     delete this->_foodValueBitmap;
+    this->stage.removeChild(this->_pager);
+    delete this->_pager;
   }
 
   /**

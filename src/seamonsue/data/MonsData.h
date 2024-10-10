@@ -142,6 +142,16 @@ static unsigned char getEvolutionCountFromTotalSec(long totalSec) {
  * @return seamonsue::MonsPersonalityData*
  */
 static seamonsue::MonsPersonalityData *createPersonalityFromCount(float countFood, float countGame, float countClean) {
+
+  // Nan 対策
+  if (countFood == countGame && countGame == countClean) {
+    seamonsue::MonsPersonalityData *data = new seamonsue::MonsPersonalityData();
+    data->food = 1;
+    data->game = 1;
+    data->clean = 1;
+    return data;
+  }
+
   float minCount = INT_MAX;
   minCount = minCount < countFood ? minCount : countFood;
   minCount = minCount < countGame ? minCount : countGame;

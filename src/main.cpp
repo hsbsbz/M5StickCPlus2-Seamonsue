@@ -11,6 +11,7 @@
 #include "seamonsue/activity/home/HomeActivity.h"
 #include "seamonsue/activity/info/InfoActivity1.h"
 #include "seamonsue/activity/info/InfoActivity2.h"
+#include "seamonsue/activity/info/InfoActivity3.h"
 #include "seamonsue/activity/menu/MenuCleanActivity.h"
 #include "seamonsue/activity/menu/MenuFoodActivity.h"
 #include "seamonsue/activity/menu/MenuGameActivity.h"
@@ -59,6 +60,7 @@ void setup() {
   app.add("/info", new seamonsue::MenuInfoActivity());    // 情報アイコン
   app.add("/info/page1", new seamonsue::InfoActivity1()); // 年齢・食事
   app.add("/info/page2", new seamonsue::InfoActivity2()); // ゲーム・掃除
+  app.add("/info/page3", new seamonsue::InfoActivity3()); //
 
   app.add("/food", new seamonsue::MenuFoodActivity());    // 食事アイコン
   app.add("/food/page1", new seamonsue::FoodActivity());  // 食事
