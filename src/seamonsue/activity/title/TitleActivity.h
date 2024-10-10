@@ -23,7 +23,7 @@ private:
     soundUtil.pressButton();
     gameStore.startGame(); // ゲームを開始
     petStore.clear();      // ペットのセーブデータを削除
-    timeStore.clear();     // タイマーのセーブデータを削除
+    timeStore.clearExceptClock();     // タイマーのセーブデータを削除
     this->go("/home");     // 遷移
   }
 

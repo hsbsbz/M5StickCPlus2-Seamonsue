@@ -77,9 +77,9 @@ protected:
     if (absAccel > 0.5) {
       timeStore.appendClockSec(direction * S_MINUTE * 10);
     } else if (absAccel > 0.35) {
-      timeStore.appendClockSec(direction * S_MINUTE * 1);
+      timeStore.appendClockSec(direction * S_MINUTE * 0.75);
     } else if (absAccel > 0.2) {
-      timeStore.appendClockSec(direction * S_MINUTE * 0.25);
+      timeStore.appendClockSec(direction * S_MINUTE * 0.15);
     }
 
     // 編集中のテキストを点滅させる

@@ -144,11 +144,14 @@ void setup() {
   gameStore.restore();
   timeStore.restore();
   petStore.restore();
-  petStore.updateEvolutionCount(timeStore.getTotalSec()); // 総時間から進化
-  petStore.updatePetParams(timeStore.getElapsedSec());    // スリープ中の経過時間を消化
-  timeStore.resetElapsedSec();
-  if (gameStore.getGameState() == seamonsue::PLAY && petStore.isDead()) {
-    gameStore.dead();
+
+  if (gameStore.getGameState() == seamonsue::PLAY) {
+    petStore.updateEvolutionCount(timeStore.getTotalSec()); // 総時間から進化
+    petStore.updatePetParams(timeStore.getElapsedSec());    // スリープ中の経過時間を消化
+    timeStore.resetElapsedSec();
+    if (petStore.isDead()) {
+      gameStore.dead();
+    }
   }
   soundUtil.muted = gameStore.getMuted(); // ミュートの状態を反映
   // 画面を切り替えてアプリを開始

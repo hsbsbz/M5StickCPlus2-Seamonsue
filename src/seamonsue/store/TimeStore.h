@@ -93,6 +93,11 @@ public:
   void clear();
 
   /**
+   * @brief 時刻設定を除いてクリア
+   */
+  void clearExceptClock();
+
+  /**
    * @brief ストレージからデータを読み出す
    */
   void restore();

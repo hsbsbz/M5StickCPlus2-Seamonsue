@@ -69,6 +69,15 @@ void TimeStore::clear() {
   this->restore(); // 変数の値も初期値に
 }
 
+void TimeStore::clearExceptClock() {
+  unsigned long clockTime = (this->_clockOffsetSec + this->getTotalSec()) % 86400;
+  this->_preferences.begin(this->_namespace, false);
+  this->_preferences.clear();
+  this->_preferences.putInt("clock", clockTime);// 時刻設定だけ再び書き込む
+  this->_preferences.end();
+  this->restore(); // 変数の値も初期値に
+}
+
 void TimeStore::appendAge(float day) {
   this->_gameStartTimeStamp -= 86400 * day;
   Serial.println("appendAge");
