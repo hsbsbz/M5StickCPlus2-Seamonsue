@@ -34,11 +34,10 @@ public:
   BroomBitmap() {
     this->_bitmap0 = new hsbs::BitmapMono(Img::Mono::clean0, Img::Mono::clean0Width, Img::Mono::clean0Height);
     this->_bitmap0->clipRect = &dotAreaRect;
-    this->_bitmap0->setScale(4, 4)->setPosition(4 * -6, 4 * 5);
+    this->_bitmap0->setPosition(-6, 5);
     this->addChild(this->_bitmap0);
     this->_bitmap1 = new hsbs::BitmapMono(Img::Mono::clean1, Img::Mono::clean1Width, Img::Mono::clean1Height);
     this->_bitmap1->clipRect = &dotAreaRect;
-    this->_bitmap1->setScale(4, 4);
     this->addChild(this->_bitmap1);
   }
 

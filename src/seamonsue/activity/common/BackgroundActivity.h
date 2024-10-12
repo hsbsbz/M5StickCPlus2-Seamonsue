@@ -2,13 +2,13 @@
 #define _SEAMONSUE__ACTIVITY__COMMON__BACKGROUND_ACTIVITY_H_INCLUDE_
 
 #include "../../../image_progmem.h"
-#include "hsbs/app/M5StickCPlust2Activity.h"
 #include "hsbs/core/Ticker.h"
 #include "hsbs/display/Bitmap565.h"
+#include "../SeamonsueActivity.h"
 
 namespace seamonsue {
 
-class BackgroundActivity : public hsbs::M5StickCPlust2Activity {
+class BackgroundActivity : public SeamonsueActivity {
 private:
   //------------------------------
   // Private

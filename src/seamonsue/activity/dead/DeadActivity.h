@@ -5,12 +5,12 @@
 
 #include "../../../image_progmem.h"
 #include "../../global.h"
-#include "hsbs/app/M5StickCPlust2Activity.h"
 #include "hsbs/display/BitmapMono.h"
+#include "../SeamonsueActivity.h"
 
 namespace seamonsue {
 
-class DeadActivity : public hsbs::M5StickCPlust2Activity {
+class DeadActivity : public SeamonsueActivity {
 private:
   //------------------------------
   // Private
@@ -29,15 +29,15 @@ protected:
    */
   void onActive() override {
     this->_bitmap = new hsbs::BitmapMono(Img::Mono::rip, Img::Mono::ripWidth, Img::Mono::ripHeight);
-    this->_bitmap->setPosition(120 - (Img::Mono::ripWidth >> 1) * 4, 8 * 4)->setScale(4, 4);
-    this->stage.addChild(this->_bitmap);
+    this->_bitmap->setPosition(21 - (Img::Mono::ripWidth >> 1), 8);
+    this->dotStage.addChild(this->_bitmap);
   }
 
   /**
    * 非アクティブ時
    */
   void onDeactive() override {
-    this->stage.removeChild(this->_bitmap);
+    this->dotStage.removeChild(this->_bitmap);
     delete this->_bitmap;
   }
 

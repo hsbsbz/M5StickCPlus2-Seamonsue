@@ -3,13 +3,13 @@
 
 #include "../../../image_progmem.h"
 #include "../../global.h"
-#include "hsbs/app/M5StickCPlust2Activity.h"
 #include "hsbs/display/BitmapMono.h"
 #include "hsbs/tween/Ease.h"
+#include "../SeamonsueActivity.h"
 
 namespace seamonsue {
 
-class TitleActivity : public hsbs::M5StickCPlust2Activity {
+class TitleActivity : public SeamonsueActivity {
 private:
   /**
    * タイトル画像

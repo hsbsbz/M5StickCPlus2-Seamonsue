@@ -91,9 +91,6 @@ public:
     // 一時キャンバスを生成
     this->_canvas = new hsbs::Canvas(43, 9);
     this->_canvas->transparentColor = TFT_WHITE;
-    this->_canvas->x = dotAreaRect.x;
-    this->_canvas->scaleX = 4;
-    this->_canvas->scaleY = 4;
     this->addChild(this->_canvas);
   }
 

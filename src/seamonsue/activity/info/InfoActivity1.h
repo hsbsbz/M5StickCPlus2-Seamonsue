@@ -5,14 +5,14 @@
 #include "../../display/NikoNikoBitmap.h"
 #include "../../display/PagerContainer.h"
 #include "../../global.h"
-#include "hsbs/app/M5StickCPlust2Activity.h"
 #include "hsbs/display/BitmapMono.h"
 #include "hsbs/display/Canvas.h"
 #include "hsbs/tween/Ease.h"
+#include "../SeamonsueActivity.h"
 
 namespace seamonsue {
 
-class InfoActivity1 : public hsbs::M5StickCPlust2Activity {
+class InfoActivity1 : public SeamonsueActivity {
 private:
   //------------------------------
   // Private
@@ -34,20 +34,20 @@ protected:
    */
   void onActive() override {
 
-    int x1 = 34 + (4 * 6);
-    int x2 = 34 + (4 * 20);
-    int x3 = 34 + (4 * 28);
+    int x1 = 6;
+    int x2 = 20;
+    int x3 = 28;
 
-    int y1 = (4 * 3);
-    int y2 = (4 * 16);
+    int y1 = 3;
+    int y2 = 16;
 
     this->_ageBitmap = new hsbs::BitmapMono(Img::Mono::info_age, Img::Mono::info_ageWidth, Img::Mono::info_ageHeight);
-    this->_ageBitmap->setPosition(x1 - (4 * 2), y1 + (4 * 3))->setScale(4, 4);
-    this->stage.addChild(this->_ageBitmap);
+    this->_ageBitmap->setPosition(x1 - 2, y1 + 3);
+    this->dotStage.addChild(this->_ageBitmap);
 
     this->_ageDotBitmap = new hsbs::BitmapMono(Img::Mono::info_dot, Img::Mono::info_dotWidth, Img::Mono::info_dotHeight);
-    this->_ageDotBitmap->setPosition(x2, y1 + (4 * 5))->setScale(4, 4);
-    this->stage.addChild(this->_ageDotBitmap);
+    this->_ageDotBitmap->setPosition(x2, y1 + 5);
+    this->dotStage.addChild(this->_ageDotBitmap);
 
     int age = timeStore.getTotalSec() / 86400; // 86400 は １日分の秒
     String ageStr = String(age);
@@ -55,44 +55,44 @@ protected:
     this->_ageCanvas->transparentColor = TFT_WHITE;
     this->_ageCanvas->canvas.fillScreen(TFT_WHITE);
     this->_ageCanvas->canvas.setTextColor(0);
-    this->_ageCanvas->setPosition(x3 + (4 * 6), y1 + (4 * 2))->setScale(4, 4);
+    this->_ageCanvas->setPosition(x3 + 6, y1 + 2);
     this->_ageCanvas->canvas.print(ageStr);
-    this->_ageCanvas->x -= ((this->_ageCanvas->canvas.textWidth(ageStr) * 4) >> 1);
-    this->stage.addChild(this->_ageCanvas);
+    this->_ageCanvas->x -= (this->_ageCanvas->canvas.textWidth(ageStr) >> 1);
+    this->dotStage.addChild(this->_ageCanvas);
 
     this->_foodBitmap = new hsbs::BitmapMono(Img::Mono::info_food, Img::Mono::info_foodWidth, Img::Mono::info_foodHeight);
-    this->_foodBitmap->setPosition(x1, y2)->setScale(4, 4);
-    this->stage.addChild(this->_foodBitmap);
+    this->_foodBitmap->setPosition(x1, y2);
+    this->dotStage.addChild(this->_foodBitmap);
 
     this->_foodDotBitmap = new hsbs::BitmapMono(Img::Mono::info_dot, Img::Mono::info_dotWidth, Img::Mono::info_dotHeight);
-    this->_foodDotBitmap->setPosition(x2, y2 + (4 * 5))->setScale(4, 4);
-    this->stage.addChild(this->_foodDotBitmap);
+    this->_foodDotBitmap->setPosition(x2, y2 + 5);
+    this->dotStage.addChild(this->_foodDotBitmap);
 
     this->_foodValueBitmap = new NikoNikoBitmap();
-    this->_foodValueBitmap->setValue(std::ceil(petStore.getFullup()))->setPosition(x3, y2)->setScale(4, 4);
-    this->stage.addChild(this->_foodValueBitmap);
+    this->_foodValueBitmap->setValue(std::ceil(petStore.getFullup()))->setPosition(x3, y2);
+    this->dotStage.addChild(this->_foodValueBitmap);
 
     this->_pager = new PagerContainer(3, 1);
-    this->stage.addChild(this->_pager);
+    this->dotStage.addChild(this->_pager);
   }
 
   /**
    * 非アクティブ時
    */
   void onDeactive() override {
-    this->stage.removeChild(this->_ageBitmap);
+    this->dotStage.removeChild(this->_ageBitmap);
     delete this->_ageBitmap;
-    this->stage.removeChild(this->_ageDotBitmap);
+    this->dotStage.removeChild(this->_ageDotBitmap);
     delete this->_ageDotBitmap;
-    this->stage.removeChild(this->_ageCanvas);
+    this->dotStage.removeChild(this->_ageCanvas);
     delete this->_ageCanvas;
-    this->stage.removeChild(this->_foodBitmap);
+    this->dotStage.removeChild(this->_foodBitmap);
     delete this->_foodBitmap;
-    this->stage.removeChild(this->_foodDotBitmap);
+    this->dotStage.removeChild(this->_foodDotBitmap);
     delete this->_foodDotBitmap;
-    this->stage.removeChild(this->_foodValueBitmap);
+    this->dotStage.removeChild(this->_foodValueBitmap);
     delete this->_foodValueBitmap;
-    this->stage.removeChild(this->_pager);
+    this->dotStage.removeChild(this->_pager);
     delete this->_pager;
   }
 

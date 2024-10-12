@@ -3,13 +3,13 @@
 
 #include "../../../image_progmem.h"
 #include "../../global.h"
-#include "hsbs/app/M5StickCPlust2Activity.h"
 #include "hsbs/display/BitmapMono.h"
 #include "hsbs/tween/Ease.h"
+#include "../SeamonsueActivity.h"
 
 namespace seamonsue {
 
-class ResetActivity : public hsbs::M5StickCPlust2Activity {
+class ResetActivity : public SeamonsueActivity {
 private:
   /**
    * タイトル画像
@@ -36,42 +36,41 @@ protected:
     this->_selectedIndex = 0;
     // Reset?
     this->_resetLabelBitmap = new hsbs::BitmapMono(Img::Mono::reset_label, Img::Mono::reset_labelWidth, Img::Mono::reset_labelHeight);
-    this->_resetLabelBitmap->setPosition(34, 2 * 4)->setScale(4, 4);
-    this->stage.addChild(this->_resetLabelBitmap);
+    this->_resetLabelBitmap->setPosition(0, 2);
+    this->dotStage.addChild(this->_resetLabelBitmap);
     if (petStore.isDead()) {
-      this->_resetLabelBitmap->x += 9 * 4;
+      this->_resetLabelBitmap->x += 9;
     }
 
     // yes0
     this->_faceBitmap0 = new hsbs::BitmapMono(Img::Mono::reset_face0, Img::Mono::reset_face0Width, Img::Mono::reset_face0Height);
-    this->_faceBitmap0->setPosition(34 + (28 * 4), 2 * 4)->setScale(4, 4);
-    this->stage.addChild(this->_faceBitmap0);
+    this->_faceBitmap0->setPosition(28, 2);
+    this->dotStage.addChild(this->_faceBitmap0);
     // yes1
     this->_faceBitmap1 = new hsbs::BitmapMono(Img::Mono::reset_face1, Img::Mono::reset_face1Width, Img::Mono::reset_face1Height);
-    this->_faceBitmap1->setPosition(this->_faceBitmap0->x, this->_faceBitmap0->y)->setScale(4, 4);
-    this->stage.addChild(this->_faceBitmap1);
+    this->_faceBitmap1->setPosition(this->_faceBitmap0->x, this->_faceBitmap0->y);
+    this->dotStage.addChild(this->_faceBitmap1);
 
     // yes0
     this->_resetYesBitmap0 = new hsbs::BitmapMono(Img::Mono::reset_yes0, Img::Mono::reset_yes0Width, Img::Mono::reset_yes0Height);
-    this->_resetYesBitmap0->setPosition(34 + (3 * 4), (22 * 4))->setScale(4, 4);
-    this->stage.addChild(this->_resetYesBitmap0);
+    this->_resetYesBitmap0->setPosition(3, 22);
+    this->dotStage.addChild(this->_resetYesBitmap0);
     // yes1
     this->_resetYesBitmap1 = new hsbs::BitmapMono(Img::Mono::reset_yes1, Img::Mono::reset_yes1Width, Img::Mono::reset_yes1Height);
-    this->_resetYesBitmap1->setPosition(this->_resetYesBitmap0->x, this->_resetYesBitmap0->y)->setScale(4, 4);
-    this->stage.addChild(this->_resetYesBitmap1);
+    this->_resetYesBitmap1->setPosition(this->_resetYesBitmap0->x, this->_resetYesBitmap0->y);
+    this->dotStage.addChild(this->_resetYesBitmap1);
 
     // no0
     this->_resetNoBitmap0 = new hsbs::BitmapMono(Img::Mono::reset_no0, Img::Mono::reset_no0Width, Img::Mono::reset_no0Height);
-    this->_resetNoBitmap0->setPosition(34 + (23 * 4), (22 * 4))->setScale(4, 4);
-    this->stage.addChild(this->_resetNoBitmap0);
+    this->_resetNoBitmap0->setPosition(23, 22);
+    this->dotStage.addChild(this->_resetNoBitmap0);
     // no1
     this->_resetNoBitmap1 = new hsbs::BitmapMono(Img::Mono::reset_no1, Img::Mono::reset_no1Width, Img::Mono::reset_no1Height);
-    this->_resetNoBitmap1->setPosition(this->_resetNoBitmap0->x, this->_resetNoBitmap0->y)->setScale(4, 4);
-    this->stage.addChild(this->_resetNoBitmap1);
+    this->_resetNoBitmap1->setPosition(this->_resetNoBitmap0->x, this->_resetNoBitmap0->y);
+    this->dotStage.addChild(this->_resetNoBitmap1);
     // outline
     this->_outlineBitmap = new hsbs::BitmapMono(Img::Mono::reset_outline, Img::Mono::reset_outlineWidth, Img::Mono::reset_outlineHeight);
-    this->_outlineBitmap->setScale(4, 4);
-    this->stage.addChild(this->_outlineBitmap);
+    this->dotStage.addChild(this->_outlineBitmap);
   }
 
   /**
@@ -79,21 +78,21 @@ protected:
    */
   void onDeactive() override {
     this->activeTransition.clear();
-    this->stage.removeChild(this->_resetLabelBitmap);
+    this->dotStage.removeChild(this->_resetLabelBitmap);
     delete this->_resetLabelBitmap;
-    this->stage.removeChild(this->_resetYesBitmap0);
+    this->dotStage.removeChild(this->_resetYesBitmap0);
     delete this->_resetYesBitmap0;
-    this->stage.removeChild(this->_resetYesBitmap1);
+    this->dotStage.removeChild(this->_resetYesBitmap1);
     delete this->_resetYesBitmap1;
-    this->stage.removeChild(this->_resetNoBitmap0);
+    this->dotStage.removeChild(this->_resetNoBitmap0);
     delete this->_resetNoBitmap0;
-    this->stage.removeChild(this->_resetNoBitmap1);
+    this->dotStage.removeChild(this->_resetNoBitmap1);
     delete this->_resetNoBitmap1;
-    this->stage.removeChild(this->_faceBitmap0);
+    this->dotStage.removeChild(this->_faceBitmap0);
     delete this->_faceBitmap0;
-    this->stage.removeChild(this->_faceBitmap1);
+    this->dotStage.removeChild(this->_faceBitmap1);
     delete this->_faceBitmap1;
-    this->stage.removeChild(this->_outlineBitmap);
+    this->dotStage.removeChild(this->_outlineBitmap);
     delete this->_outlineBitmap;
   }
 
@@ -117,7 +116,7 @@ protected:
     }
 
     hsbs::BitmapMono *outlineTarget = (this->_selectedIndex == 0) ? this->_resetNoBitmap0 : this->_resetYesBitmap0;
-    this->_outlineBitmap->setPosition(outlineTarget->x - 4, outlineTarget->y - 4);
+    this->_outlineBitmap->setPosition(outlineTarget->x - 1, outlineTarget->y - 1);
     this->_outlineBitmap->visible = ((now / 250) % 3) == 0;
   }
 

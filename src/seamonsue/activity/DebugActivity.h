@@ -4,13 +4,14 @@
 #include "../../image_progmem.h"
 #include "../global.h"
 #include "esp_heap_caps.h"
-#include "hsbs/app/M5StickCPlust2Activity.h"
 #include "hsbs/core/Ticker.h"
 #include "hsbs/display/Canvas.h"
+#include "./SeamonsueActivity.h"
+
 
 namespace seamonsue {
 
-class DebugActivity : public hsbs::M5StickCPlust2Activity {
+class DebugActivity : public SeamonsueActivity {
 private:
   hsbs::Canvas *_canvas;
 

@@ -2,13 +2,13 @@
 #define _SEAMONSUE__ACTIVITY__GAME__GAME_ACTIVITY1_H_INCLUDE_
 
 #include "../../display/GameContainer.h"
-#include "hsbs/app/M5StickCPlust2Activity.h"
 #include "hsbs/core/Ticker.h"
 #include "hsbs/display/BitmapMono.h"
+#include "../SeamonsueActivity.h"
 
 namespace seamonsue {
 
-class GameActivity1 : public hsbs::M5StickCPlust2Activity {
+class GameActivity1 : public SeamonsueActivity {
 private:
   //------------------------------
   // Private
@@ -56,22 +56,22 @@ protected:
 
     // ゲームコンテンツ
     this->gameContainer = new GameContainer();
-    this->stage.addChild(this->gameContainer);
+    this->dotStage.addChild(this->gameContainer);
 
     // 1
     this->_countDownBitmap1 = new hsbs::BitmapMono(Img::Mono::game_n1, Img::Mono::game_n1Width, Img::Mono::game_n1Height);
     this->_countDownBitmap1->visible = false;
-    this->stage.addChild(this->_countDownBitmap1->setPosition(34 + (4 * 12), 20)->setScale(4, 4));
+    this->dotStage.addChild(this->_countDownBitmap1->setPosition(12, 5));
 
     // 2
     this->_countDownBitmap2 = new hsbs::BitmapMono(Img::Mono::game_n2, Img::Mono::game_n2Width, Img::Mono::game_n2Height);
     this->_countDownBitmap2->visible = false;
-    this->stage.addChild(this->_countDownBitmap2->setPosition(34 + (4 * 12), 20)->setScale(4, 4));
+    this->dotStage.addChild(this->_countDownBitmap2->setPosition(12, 5));
 
     // 3
     this->_countDownBitmap3 = new hsbs::BitmapMono(Img::Mono::game_n3, Img::Mono::game_n3Width, Img::Mono::game_n3Height);
     this->_countDownBitmap3->visible = false;
-    this->stage.addChild(this->_countDownBitmap3->setPosition(34 + (4 * 12), 20)->setScale(4, 4));
+    this->dotStage.addChild(this->_countDownBitmap3->setPosition(12, 5));
 
     // トランジション
     this->activeTransition.add(
@@ -84,24 +84,24 @@ protected:
           soundUtil.gameContdown();
         }),
         // 2
-        this->activeTransition.tween(100, hsbs::Ease::IN_SINE)->add(&this->_countDownBitmap3->y, 20, 28),
-        this->activeTransition.tween(300, hsbs::Ease::OUT_SINE)->add(&this->_countDownBitmap3->y, 20, 16),
+        this->activeTransition.tween(100, hsbs::Ease::IN_SINE)->add(&this->_countDownBitmap3->y, 5, 7),
+        this->activeTransition.tween(300, hsbs::Ease::OUT_SINE)->add(&this->_countDownBitmap3->y, 5, 4),
         this->activeTransition.callback([this]() {
           this->_countDownBitmap2->visible = true;
           this->_countDownBitmap3->visible = false;
           soundUtil.gameContdown();
         }),
         // 1
-        this->activeTransition.tween(100, hsbs::Ease::IN_SINE)->add(&this->_countDownBitmap2->y, 20, 28),
-        this->activeTransition.tween(300, hsbs::Ease::OUT_SINE)->add(&this->_countDownBitmap2->y, 28, 20),
+        this->activeTransition.tween(100, hsbs::Ease::IN_SINE)->add(&this->_countDownBitmap2->y, 5, 7),
+        this->activeTransition.tween(300, hsbs::Ease::OUT_SINE)->add(&this->_countDownBitmap2->y, 7, 5),
         this->activeTransition.callback([this]() {
           this->_countDownBitmap1->visible = true;
           this->_countDownBitmap2->visible = false;
           soundUtil.gameContdown();
         }),
         // 0
-        this->activeTransition.tween(100, hsbs::Ease::IN_SINE)->add(&this->_countDownBitmap1->y, 20, 28),
-        this->activeTransition.tween(300, hsbs::Ease::OUT_SINE)->add(&this->_countDownBitmap1->y, 28, 20),
+        this->activeTransition.tween(100, hsbs::Ease::IN_SINE)->add(&this->_countDownBitmap1->y, 5, 7),
+        this->activeTransition.tween(300, hsbs::Ease::OUT_SINE)->add(&this->_countDownBitmap1->y, 7, 5),
         this->activeTransition.callback([this]() {
           this->_countDownBitmap1->visible = false;
           this->_countdown = false;
@@ -116,13 +116,13 @@ protected:
    */
   void onDeactive() override {
     this->activeTransition.clear();
-    this->stage.removeChild(this->gameContainer);
+    this->dotStage.removeChild(this->gameContainer);
     delete this->gameContainer;
-    this->stage.removeChild(this->_countDownBitmap1);
+    this->dotStage.removeChild(this->_countDownBitmap1);
     delete this->_countDownBitmap1;
-    this->stage.removeChild(this->_countDownBitmap2);
+    this->dotStage.removeChild(this->_countDownBitmap2);
     delete this->_countDownBitmap2;
-    this->stage.removeChild(this->_countDownBitmap3);
+    this->dotStage.removeChild(this->_countDownBitmap3);
     delete this->_countDownBitmap3;
   }
 
@@ -134,9 +134,9 @@ protected:
 
     // カウントダウン中
     if (this->_countdown) {
-      this->_countDownBitmap1->y = ((int)this->_countDownBitmap1->y >> 2) << 2; // ドットに吸着
-      this->_countDownBitmap2->y = ((int)this->_countDownBitmap2->y >> 2) << 2; // ドットに吸着
-      this->_countDownBitmap3->y = ((int)this->_countDownBitmap3->y >> 2) << 2; // ドットに吸着
+      this->_countDownBitmap1->y = ((int)this->_countDownBitmap1->y >> 0); // ドットに吸着
+      this->_countDownBitmap2->y = ((int)this->_countDownBitmap2->y >> 0); // ドットに吸着
+      this->_countDownBitmap3->y = ((int)this->_countDownBitmap3->y >> 0); // ドットに吸着
       return;
     }
 

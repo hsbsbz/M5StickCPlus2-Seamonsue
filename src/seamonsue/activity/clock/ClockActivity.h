@@ -4,8 +4,8 @@
 #include "../../display/ClockContainer.h"
 #include "../../display/MonsBitmap.h"
 #include "../../global.h"
-#include "hsbs/app/M5StickCPlust2Activity.h"
 #include "hsbs/display/BitmapMono.h"
+#include "../SeamonsueActivity.h"
 #include <M5StickCPlus2.h>
 
 namespace seamonsue {
@@ -14,7 +14,7 @@ namespace seamonsue {
  * @brief 時計画面でもミュートボタンの切り替えができるように Press ではなく Release で操作しる。、
  * 
  */
-class ClockActivity : public hsbs::M5StickCPlust2Activity {
+class ClockActivity : public SeamonsueActivity {
 private:
   //------------------------------
   // Private
@@ -59,20 +59,20 @@ protected:
 
     // モンス画像
     this->_monsBitmap = new MonsBitmap();
-    this->_monsBitmap->setPosition(119, 135)->setScale(4, 4);
-    this->stage.addChild(this->_monsBitmap);
+    this->_monsBitmap->setPosition(21, 8);
+    this->dotStage.addChild(this->_monsBitmap);
     this->_monsBitmap->update();
 
     // デジタル時計
     this->_clockContainer = new ClockContainer();
-    this->_clockContainer->setPosition(0, 12);
-    this->stage.addChild(this->_clockContainer);
+    this->_clockContainer->setPosition(0, 3);
+    this->dotStage.addChild(this->_clockContainer);
 
     // トランジション
     if (!gameStore.getClockMode()) {
       // ホームから遷移した場合は、スクロールアニメーション
       gameStore.toggleClockMode();
-      this->activeTransition.add(this->activeTransition.tween(300, hsbs::Ease::OUT_SINE)->add(&this->_clockContainer->y, 12 - 48, 12));
+      this->activeTransition.add(this->activeTransition.tween(300, hsbs::Ease::OUT_SINE)->add(&this->_clockContainer->y, 3 -12, 3));
     }
     this->deactiveTransition.add(
         this->deactiveTransition.callback([this] {
@@ -81,7 +81,7 @@ protected:
             gameStore.toggleClockMode();
           }
         }),
-        this->deactiveTransition.tween(300, hsbs::Ease::IN_SINE)->add(&this->_clockContainer->y, 12, 12 - 48));
+        this->deactiveTransition.tween(300, hsbs::Ease::IN_SINE)->add(&this->_clockContainer->y, 3, 3 - 12));
   }
 
   /**
@@ -90,9 +90,9 @@ protected:
   void onDeactive() override {
     this->activeTransition.clear();
     this->deactiveTransition.clear();
-    this->stage.removeChild(this->_monsBitmap);
+    this->dotStage.removeChild(this->_monsBitmap);
     delete this->_monsBitmap;
-    this->stage.removeChild(this->_clockContainer);
+    this->dotStage.removeChild(this->_clockContainer);
     delete this->_clockContainer;
   }
 
@@ -106,15 +106,15 @@ protected:
     this->_monsBitmap->update();
 
     // 時計とモンスがかぶる場合は、モンスを下にずらす
-    int clockBottom = this->_clockContainer->y + 46;
-    int monsY = 135 - ((this->_monsBitmap->monsH - this->_monsBitmap->monsY) << 2);
+    int clockBottom = this->_clockContainer->y + 12;
+    int monsY = 34 - (this->_monsBitmap->monsH - this->_monsBitmap->monsY);
     int delta = clockBottom - monsY;
     delta = delta < 0 ? 0 : delta;
-    this->_monsBitmap->y = 135 + delta;
+    this->_monsBitmap->y = 34 + delta;
 
     // ピクセル吸着
-    this->_clockContainer->y = ((int)this->_clockContainer->y >> 2) << 2;
-    this->_monsBitmap->y = ((int)this->_monsBitmap->y >> 2) << 2;
+    this->_clockContainer->y = (int)this->_clockContainer->y >> 0;
+    this->_monsBitmap->y = (int)this->_monsBitmap->y >> 0;
 
     // 編集中に非表示
     bool exact = this->isExact() || (this->deactiveTransition.getState() == hsbs::TweenState::RUNNING);

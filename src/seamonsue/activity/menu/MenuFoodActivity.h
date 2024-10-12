@@ -3,12 +3,12 @@
 
 #include "../../../image_progmem.h"
 #include "../../global.h"
-#include "hsbs/app/M5StickCPlust2Activity.h"
 #include "hsbs/display/Bitmap565.h"
+#include "../SeamonsueActivity.h"
 
 namespace seamonsue {
 
-class MenuFoodActivity : public hsbs::M5StickCPlust2Activity {
+class MenuFoodActivity : public SeamonsueActivity {
 private:
   //------------------------------
   // Private

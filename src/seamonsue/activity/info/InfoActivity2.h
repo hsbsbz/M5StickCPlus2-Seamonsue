@@ -5,11 +5,11 @@
 #include "../../display/NikoNikoBitmap.h"
 #include "../../display/PagerContainer.h"
 #include "../../global.h"
-#include "hsbs/app/M5StickCPlust2Activity.h"
+#include "../SeamonsueActivity.h"
 
 namespace seamonsue {
 
-class InfoActivity2 : public hsbs::M5StickCPlust2Activity {
+class InfoActivity2 : public SeamonsueActivity {
 private:
   //------------------------------
   // Private
@@ -31,58 +31,58 @@ public:
    */
   void onActive() override {
 
-    int x1 = 34 + (4 * 6);
-    int x2 = 34 + (4 * 20);
-    int x3 = 34 + (4 * 28);
+    int x1 = 6;
+    int x2 = 20;
+    int x3 = 28;
 
-    int y1 = (4 * 3);
-    int y2 = (4 * 16);
+    int y1 = 3;
+    int y2 = 16;
 
     this->_gameBitmap = new hsbs::BitmapMono(Img::Mono::info_game, Img::Mono::info_gameWidth, Img::Mono::info_gameHeight);
-    this->_gameBitmap->setPosition(x1, y1)->setScale(4, 4);
-    this->stage.addChild(this->_gameBitmap);
+    this->_gameBitmap->setPosition(x1, y1);
+    this->dotStage.addChild(this->_gameBitmap);
 
     this->_gameDotBitmap = new hsbs::BitmapMono(Img::Mono::info_dot, Img::Mono::info_dotWidth, Img::Mono::info_dotHeight);
-    this->_gameDotBitmap->setPosition(x2, y1 + (4 * 5))->setScale(4, 4);
-    this->stage.addChild(this->_gameDotBitmap);
+    this->_gameDotBitmap->setPosition(x2, y1 + 5);
+    this->dotStage.addChild(this->_gameDotBitmap);
 
     this->_gameValueBitmap = new NikoNikoBitmap();
-    this->_gameValueBitmap->setValue(std::ceil(petStore.getPleasanty()))->setPosition(x3, y1)->setScale(4, 4);
-    this->stage.addChild(this->_gameValueBitmap);
+    this->_gameValueBitmap->setValue(std::ceil(petStore.getPleasanty()))->setPosition(x3, y1);
+    this->dotStage.addChild(this->_gameValueBitmap);
 
     this->_cleanBitmap = new hsbs::BitmapMono(Img::Mono::info_clean, Img::Mono::info_cleanWidth, Img::Mono::info_cleanHeight);
-    this->_cleanBitmap->setPosition(x1, y2)->setScale(4, 4);
-    this->stage.addChild(this->_cleanBitmap);
+    this->_cleanBitmap->setPosition(x1, y2);
+    this->dotStage.addChild(this->_cleanBitmap);
 
     this->_cleanDotBitmap = new hsbs::BitmapMono(Img::Mono::info_dot, Img::Mono::info_dotWidth, Img::Mono::info_dotHeight);
-    this->_cleanDotBitmap->setPosition(x2, y2 + (4 * 5))->setScale(4, 4);
-    this->stage.addChild(this->_cleanDotBitmap);
+    this->_cleanDotBitmap->setPosition(x2, y2 + 5);
+    this->dotStage.addChild(this->_cleanDotBitmap);
 
     this->_cleanValueBitmap = new NikoNikoBitmap();
-    this->_cleanValueBitmap->setValue(std::ceil(petStore.getPretty()))->setPosition(x3, y2)->setScale(4, 4);
-    this->stage.addChild(this->_cleanValueBitmap);
+    this->_cleanValueBitmap->setValue(std::ceil(petStore.getPretty()))->setPosition(x3, y2);
+    this->dotStage.addChild(this->_cleanValueBitmap);
     
     this->_pager = new PagerContainer(3, 2);
-    this->stage.addChild(this->_pager);
+    this->dotStage.addChild(this->_pager);
   }
 
   /**
    * 非アクティブ時
    */
   void onDeactive() override {
-    this->stage.removeChild(this->_gameBitmap);
+    this->dotStage.removeChild(this->_gameBitmap);
     delete this->_gameBitmap;
-    this->stage.removeChild(this->_gameDotBitmap);
+    this->dotStage.removeChild(this->_gameDotBitmap);
     delete this->_gameDotBitmap;
-    this->stage.removeChild(this->_gameValueBitmap);
+    this->dotStage.removeChild(this->_gameValueBitmap);
     delete this->_gameValueBitmap;
-    this->stage.removeChild(this->_cleanBitmap);
+    this->dotStage.removeChild(this->_cleanBitmap);
     delete this->_cleanBitmap;
-    this->stage.removeChild(this->_cleanDotBitmap);
+    this->dotStage.removeChild(this->_cleanDotBitmap);
     delete this->_cleanDotBitmap;
-    this->stage.removeChild(this->_cleanValueBitmap);
+    this->dotStage.removeChild(this->_cleanValueBitmap);
     delete this->_cleanValueBitmap;
-    this->stage.removeChild(this->_pager);
+    this->dotStage.removeChild(this->_pager);
     delete this->_pager;
   }
 

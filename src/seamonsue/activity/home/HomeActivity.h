@@ -5,11 +5,11 @@
 // #include "../../display/DirtyBitmap.h"
 #include "../../display/MonsBitmap.h"
 #include "../../global.h"
-#include "hsbs/app/M5StickCPlust2Activity.h"
+#include "../SeamonsueActivity.h"
 
 namespace seamonsue {
 
-class HomeActivity : public hsbs::M5StickCPlust2Activity {
+class HomeActivity : public SeamonsueActivity {
 private:
   //------------------------------
   // Private
@@ -34,15 +34,15 @@ protected:
   void onActive() override {
     // モンス画像
     this->_monsBitmap = new MonsBitmap();
-    this->_monsBitmap->setPosition(119, 135)->setScale(4, 4);
-    this->stage.addChild(this->_monsBitmap);
+    this->_monsBitmap->setPosition(21, 34);
+    this->dotStage.addChild(this->_monsBitmap);
   }
 
   /**
    * 非アクティブ時
    */
   void onDeactive() override {
-    this->stage.removeChild(this->_monsBitmap);
+    this->dotStage.removeChild(this->_monsBitmap);
     delete this->_monsBitmap;
   }
 

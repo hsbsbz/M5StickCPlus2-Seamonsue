@@ -1,13 +1,13 @@
 #ifndef _SEAMONSUE__ACTIVITY__CLOCK__CLOCK_EDIT_ACTIVITY_H_INCLUDE_
 #define _SEAMONSUE__ACTIVITY__CLOCK__CLOCK_EDIT_ACTIVITY_H_INCLUDE_
 
-#include "hsbs/app/M5StickCPlust2Activity.h"
 #include "hsbs/display/BitmapMono.h"
+#include "../SeamonsueActivity.h"
 #include <M5StickCPlus2.h>
 
 namespace seamonsue {
 
-class ClockEditActivity : public hsbs::M5StickCPlust2Activity {
+class ClockEditActivity : public SeamonsueActivity {
 private:
   //------------------------------
   // Private
@@ -46,16 +46,16 @@ protected:
     this->_pressedC = false;
     // 編集中画像
     this->_textBitmap = new hsbs::BitmapMono(Img::Mono::clock_edit, Img::Mono::clock_editWidth, Img::Mono::clock_editHeight);
-    this->_textBitmap->setPosition(dotAreaRect.x + 36, 68)->setScale(4, 4);
+    this->_textBitmap->setPosition(9, 17);
     this->_textBitmap->visible = false;
-    this->stage.addChild(this->_textBitmap);
+    this->dotStage.addChild(this->_textBitmap);
   }
 
   /**
    * 非アクティブ時
    */
   void onDeactive() override {
-    this->stage.removeChild(this->_textBitmap);
+    this->dotStage.removeChild(this->_textBitmap);
     delete this->_textBitmap;
   }
 
