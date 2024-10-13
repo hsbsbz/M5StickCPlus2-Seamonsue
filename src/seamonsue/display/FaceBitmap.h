@@ -33,21 +33,21 @@ public:
    * @param smile
    */
   FaceBitmap(bool smile = true) {
-    this->_face0 = new hsbs::BitmapMono(Img::Mono::face0, Img::Mono::face0Width, Img::Mono::face0Height);
+    this->_face0 = new Img::Mono::Face0Bitmap();
     this->_face0->y = 1;
     this->addChild(this->_face0);
     if (smile) {
-      this->_face1 = new hsbs::BitmapMono(Img::Mono::face1, Img::Mono::face1Width, Img::Mono::face1Height);
+      this->_face1 = new Img::Mono::Face1Bitmap();
     } else {
-      this->_face1 = new hsbs::BitmapMono(Img::Mono::face2, Img::Mono::face2Width, Img::Mono::face2Height);
+      this->_face1 = new Img::Mono::Face2Bitmap();
     }
     this->addChild(this->_face1);
 
-    this->_face0->anchorX = Img::Mono::face0Width;
-    this->_face0->anchorY = Img::Mono::face0Height;
+    this->_face0->anchorX = this->_face0->width;
+    this->_face0->anchorY = this->_face0->height;
 
-    this->_face1->anchorX = Img::Mono::face1Width;
-    this->_face1->anchorY = Img::Mono::face1Height;
+    this->_face1->anchorX = this->_face1->width;
+    this->_face1->anchorY = this->_face1->height;
   }
 
   /**

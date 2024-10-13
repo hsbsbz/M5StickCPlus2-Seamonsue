@@ -2,9 +2,9 @@
 #define _SEAMONSUE__ACTIVITY__COMMON__BACKGROUND_ACTIVITY_H_INCLUDE_
 
 #include "../../../image_progmem.h"
+#include "../SeamonsueActivity.h"
 #include "hsbs/core/Ticker.h"
 #include "hsbs/display/Bitmap565.h"
-#include "../SeamonsueActivity.h"
 
 namespace seamonsue {
 
@@ -35,10 +35,10 @@ protected:
    */
   void onActive() override {
     // 背景画像を生成
-    this->_bgBitmap = new hsbs::Bitmap565(Img::Rgb565::bg, Img::Rgb565::bgWidth, Img::Rgb565::bgHeight);
+    this->_bgBitmap = new Img::Rgb565::BgBitmap();
     this->stage.addChild(this->_bgBitmap);
     // 音アイコンを生成
-    this->_soundBitmap = new hsbs::Bitmap565(Img::Rgb565::icon_sound, Img::Rgb565::icon_soundWidth, Img::Rgb565::icon_soundHeight);
+    this->_soundBitmap = new Img::Rgb565::IconSoundBitmap();
     this->_soundBitmap->setPosition(10, 6);
     this->stage.addChild(this->_soundBitmap);
     // バッテリー

@@ -59,17 +59,17 @@ protected:
     this->dotStage.addChild(this->gameContainer);
 
     // 1
-    this->_countDownBitmap1 = new hsbs::BitmapMono(Img::Mono::game_n1, Img::Mono::game_n1Width, Img::Mono::game_n1Height);
+    this->_countDownBitmap1 = new Img::Mono::GameN1Bitmap();
     this->_countDownBitmap1->visible = false;
     this->dotStage.addChild(this->_countDownBitmap1->setPosition(12, 5));
 
     // 2
-    this->_countDownBitmap2 = new hsbs::BitmapMono(Img::Mono::game_n2, Img::Mono::game_n2Width, Img::Mono::game_n2Height);
+    this->_countDownBitmap2 = new Img::Mono::GameN2Bitmap();
     this->_countDownBitmap2->visible = false;
     this->dotStage.addChild(this->_countDownBitmap2->setPosition(12, 5));
 
     // 3
-    this->_countDownBitmap3 = new hsbs::BitmapMono(Img::Mono::game_n3, Img::Mono::game_n3Width, Img::Mono::game_n3Height);
+    this->_countDownBitmap3 = new Img::Mono::GameN3Bitmap();
     this->_countDownBitmap3->visible = false;
     this->dotStage.addChild(this->_countDownBitmap3->setPosition(12, 5));
 

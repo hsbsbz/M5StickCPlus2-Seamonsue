@@ -47,11 +47,11 @@ protected:
     this->dotStage.addChild(this->_monsBitmap);
     this->_monsBitmap->walkAnimation();
     this->_monsBitmap->update();
-    this->_foodBitmap0 = new hsbs::BitmapMono(Img::Mono::food, Img::Mono::foodWidth, Img::Mono::foodHeight);
+    this->_foodBitmap0 = new Img::Mono::FoodBitmap();
     this->_foodBitmap0->setPosition(4, -14);
-    this->_foodBitmap1 = new hsbs::BitmapMono(Img::Mono::food, Img::Mono::foodWidth, Img::Mono::foodHeight);
+    this->_foodBitmap1 = new Img::Mono::FoodBitmap();
     this->_foodBitmap1->setPosition(10, -10);
-    this->_foodBitmap2 = new hsbs::BitmapMono(Img::Mono::food, Img::Mono::foodWidth, Img::Mono::foodHeight);
+    this->_foodBitmap2 = new Img::Mono::FoodBitmap();
     this->_foodBitmap2->setPosition(6, -4);
     this->dotStage.addChild(this->_foodBitmap0);
     this->dotStage.addChild(this->_foodBitmap1);

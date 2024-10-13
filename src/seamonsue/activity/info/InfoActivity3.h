@@ -28,7 +28,7 @@ public:
    */
   void onActive() override {
 
-    this->_label = new hsbs::BitmapMono(Img::Mono::info_fav, Img::Mono::info_favWidth, Img::Mono::info_favHeight);
+    this->_label = new Img::Mono::InfoFavBitmap();
     this->_label->setPosition(5, 4);
     this->dotStage.addChild(this->_label);
 
@@ -46,7 +46,7 @@ public:
     int x = 0;
     int y = 14;
     if (personality->food > 0) {
-      hsbs::BitmapMono *foodBitmap = new hsbs::BitmapMono(Img::Mono::info_food, Img::Mono::info_foodWidth, Img::Mono::info_foodHeight);
+      hsbs::BitmapMono *foodBitmap = new Img::Mono::InfoFoodBitmap();
       foodBitmap->setPosition(x, y);
       this->dotStage.addChild(foodBitmap);
       this->_bitmapList.add(foodBitmap);
@@ -54,7 +54,7 @@ public:
       x += space;
     }
     if (personality->game > 0) {
-      hsbs::BitmapMono *gameBitmap = new hsbs::BitmapMono(Img::Mono::info_game, Img::Mono::info_gameWidth, Img::Mono::info_gameHeight);
+      hsbs::BitmapMono *gameBitmap = new Img::Mono::InfoGameBitmap();
       gameBitmap->setPosition(x, y);
       this->dotStage.addChild(gameBitmap);
       this->_bitmapList.add(gameBitmap);
@@ -62,7 +62,7 @@ public:
       x += space;
     }
     if (personality->clean > 0) {
-      hsbs::BitmapMono *cleanBitmap = new hsbs::BitmapMono(Img::Mono::info_clean, Img::Mono::info_cleanWidth, Img::Mono::info_cleanHeight);
+      hsbs::BitmapMono *cleanBitmap = new Img::Mono::InfoCleanBitmap();
       cleanBitmap->setPosition(x, y);
       this->dotStage.addChild(cleanBitmap);
       this->_bitmapList.add(cleanBitmap);

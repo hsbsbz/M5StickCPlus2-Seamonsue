@@ -1,8 +1,8 @@
 #ifndef _SEAMONSUE__ACTIVITY__CLOCK__CLOCK_EDIT_ACTIVITY_H_INCLUDE_
 #define _SEAMONSUE__ACTIVITY__CLOCK__CLOCK_EDIT_ACTIVITY_H_INCLUDE_
 
-#include "hsbs/display/BitmapMono.h"
 #include "../SeamonsueActivity.h"
+#include "hsbs/display/BitmapMono.h"
 #include <M5StickCPlus2.h>
 
 namespace seamonsue {
@@ -45,7 +45,7 @@ protected:
     this->_pressedB = false;
     this->_pressedC = false;
     // 編集中画像
-    this->_textBitmap = new hsbs::BitmapMono(Img::Mono::clock_edit, Img::Mono::clock_editWidth, Img::Mono::clock_editHeight);
+    this->_textBitmap = new Img::Mono::ClockEditBitmap();
     this->_textBitmap->setPosition(9, 17);
     this->_textBitmap->visible = false;
     this->dotStage.addChild(this->_textBitmap);

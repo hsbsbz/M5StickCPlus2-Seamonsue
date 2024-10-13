@@ -41,11 +41,11 @@ protected:
     int y1 = 3;
     int y2 = 16;
 
-    this->_ageBitmap = new hsbs::BitmapMono(Img::Mono::info_age, Img::Mono::info_ageWidth, Img::Mono::info_ageHeight);
+    this->_ageBitmap = new Img::Mono::InfoAgeBitmap();
     this->_ageBitmap->setPosition(x1 - 2, y1 + 3);
     this->dotStage.addChild(this->_ageBitmap);
 
-    this->_ageDotBitmap = new hsbs::BitmapMono(Img::Mono::info_dot, Img::Mono::info_dotWidth, Img::Mono::info_dotHeight);
+    this->_ageDotBitmap = new Img::Mono::InfoDotBitmap();
     this->_ageDotBitmap->setPosition(x2, y1 + 5);
     this->dotStage.addChild(this->_ageDotBitmap);
 
@@ -60,11 +60,11 @@ protected:
     this->_ageCanvas->x -= (this->_ageCanvas->canvas.textWidth(ageStr) >> 1);
     this->dotStage.addChild(this->_ageCanvas);
 
-    this->_foodBitmap = new hsbs::BitmapMono(Img::Mono::info_food, Img::Mono::info_foodWidth, Img::Mono::info_foodHeight);
+    this->_foodBitmap = new Img::Mono::InfoFoodBitmap();
     this->_foodBitmap->setPosition(x1, y2);
     this->dotStage.addChild(this->_foodBitmap);
 
-    this->_foodDotBitmap = new hsbs::BitmapMono(Img::Mono::info_dot, Img::Mono::info_dotWidth, Img::Mono::info_dotHeight);
+    this->_foodDotBitmap = new Img::Mono::InfoDotBitmap();
     this->_foodDotBitmap->setPosition(x2, y2 + 5);
     this->dotStage.addChild(this->_foodDotBitmap);
 

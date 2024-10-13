@@ -50,22 +50,22 @@ public:
   GameContainer() {
     this->_playerRect = new hsbs::Rectangle((maxWidth - Img::Mono::game_player0Width) >> 1, maxHeight - Img::Mono::game_player0Height, Img::Mono::game_player0Width, Img::Mono::game_player0Height);
 
-    this->_fishBitmap = new hsbs::BitmapMono(Img::Mono::game_fish, Img::Mono::game_fishWidth, Img::Mono::game_fishHeight);
+    this->_fishBitmap = new Img::Mono::GameFishBitmap();
     this->_fishBitmap->setScale(4, 4);
 
-    this->_heartBitmap0 = new hsbs::BitmapMono(Img::Mono::game_heart0, Img::Mono::game_heart0Width, Img::Mono::game_heart0Height);
+    this->_heartBitmap0 = new Img::Mono::GameHeart0Bitmap();
     this->_heartBitmap0->setScale(4, 4);
-    this->_heartBitmap1 = new hsbs::BitmapMono(Img::Mono::game_heart1, Img::Mono::game_heart1Width, Img::Mono::game_heart1Height);
+    this->_heartBitmap1 = new Img::Mono::GameHeart1Bitmap();
     this->_heartBitmap1->setScale(4, 4);
 
-    this->_playerBitmap0 = new hsbs::BitmapMono(Img::Mono::game_player0, Img::Mono::game_player0Width, Img::Mono::game_player0Height);
+    this->_playerBitmap0 = new Img::Mono::GamePlayer0Bitmap();
     this->_playerBitmap0->setScale(4, 4);
-    this->_playerBitmap1 = new hsbs::BitmapMono(Img::Mono::game_player1, Img::Mono::game_player1Width, Img::Mono::game_player1Height);
+    this->_playerBitmap1 = new Img::Mono::GamePlayer1Bitmap();
     this->_playerBitmap1->setScale(4, 4);
 
-    this->_smallHeartBitmap0 = new hsbs::BitmapMono(Img::Mono::game_heart_s0, Img::Mono::game_heart_s0Width, Img::Mono::game_heart_s0Height);
+    this->_smallHeartBitmap0 = new Img::Mono::GameHeartS0Bitmap();
     this->_smallHeartBitmap0->setScale(4, 4);
-    this->_smallHeartBitmap1 = new hsbs::BitmapMono(Img::Mono::game_heart_s1, Img::Mono::game_heart_s1Width, Img::Mono::game_heart_s1Height);
+    this->_smallHeartBitmap1 = new Img::Mono::GameHeartS1Bitmap();
     this->_smallHeartBitmap1->setScale(4, 4);
   }
 

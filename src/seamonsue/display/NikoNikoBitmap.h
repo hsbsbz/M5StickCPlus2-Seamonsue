@@ -23,8 +23,8 @@ public:
    * コンストラクタ
    */
   NikoNikoBitmap() {
-    this->_bitmap0 = new hsbs::BitmapMono(Img::Mono::info_face0, Img::Mono::info_face0Width, Img::Mono::info_face0Height);
-    this->_bitmap1 = new hsbs::BitmapMono(Img::Mono::info_face3, Img::Mono::info_face3Width, Img::Mono::info_face3Height);
+    this->_bitmap0 = new Img::Mono::InfoFace0Bitmap();
+    this->_bitmap1 = new Img::Mono::InfoFace3Bitmap();
     this->_bitmap0->y = 1;
     this->addChild(this->_bitmap0);
     this->addChild(this->_bitmap1);
@@ -51,12 +51,12 @@ public:
     delete this->_bitmap1;
 
     switch (value) {
-    case 0: this->_bitmap1 = new hsbs::BitmapMono(Img::Mono::info_face1, Img::Mono::info_face1Width, Img::Mono::info_face1Height); break;
-    case 1: this->_bitmap1 = new hsbs::BitmapMono(Img::Mono::info_face2, Img::Mono::info_face2Width, Img::Mono::info_face2Height); break;
-    case 2: this->_bitmap1 = new hsbs::BitmapMono(Img::Mono::info_face3, Img::Mono::info_face3Width, Img::Mono::info_face3Height); break;
-    case 3: this->_bitmap1 = new hsbs::BitmapMono(Img::Mono::info_face4, Img::Mono::info_face4Width, Img::Mono::info_face4Height); break;
-    case 4: this->_bitmap1 = new hsbs::BitmapMono(Img::Mono::info_face5, Img::Mono::info_face5Width, Img::Mono::info_face5Height); break;
-    default: this->_bitmap1 = new hsbs::BitmapMono(Img::Mono::info_face3, Img::Mono::info_face3Width, Img::Mono::info_face3Height); break;
+    case 0: this->_bitmap1 = new Img::Mono::InfoFace1Bitmap(); break;
+    case 1: this->_bitmap1 = new Img::Mono::InfoFace2Bitmap(); break;
+    case 2: this->_bitmap1 = new Img::Mono::InfoFace3Bitmap(); break;
+    case 3: this->_bitmap1 = new Img::Mono::InfoFace4Bitmap(); break;
+    case 4: this->_bitmap1 = new Img::Mono::InfoFace5Bitmap(); break;
+    default: this->_bitmap1 = new Img::Mono::InfoFace3Bitmap(); break;
     }
     this->addChild(this->_bitmap1);
 

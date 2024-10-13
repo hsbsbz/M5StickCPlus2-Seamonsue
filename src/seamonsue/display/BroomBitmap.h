@@ -18,11 +18,11 @@ protected:
   /**
    * コマアニメ１フレーム
    */
-  hsbs::BitmapMono *_bitmap0;
+  Img::Mono::Clean0Bitmap *_bitmap0;
   /**
    * コマアニメ２フレーム
    */
-  hsbs::BitmapMono *_bitmap1;
+  Img::Mono::Clean1Bitmap *_bitmap1;
 
 public:
   //------------------------------
@@ -32,11 +32,11 @@ public:
    * コンストラクタ
    */
   BroomBitmap() {
-    this->_bitmap0 = new hsbs::BitmapMono(Img::Mono::clean0, Img::Mono::clean0Width, Img::Mono::clean0Height);
+    this->_bitmap0 = new Img::Mono::Clean0Bitmap();
     this->_bitmap0->clipRect = &dotAreaRect;
     this->_bitmap0->setPosition(-6, 5);
     this->addChild(this->_bitmap0);
-    this->_bitmap1 = new hsbs::BitmapMono(Img::Mono::clean1, Img::Mono::clean1Width, Img::Mono::clean1Height);
+    this->_bitmap1 = new  Img::Mono::Clean1Bitmap();
     this->_bitmap1->clipRect = &dotAreaRect;
     this->addChild(this->_bitmap1);
   }

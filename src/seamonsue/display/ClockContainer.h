@@ -77,16 +77,16 @@ public:
    */
   ClockContainer() {
     // 数字のビットマップを生成
-    this->_numBitmapList.add(new hsbs::BitmapMono(Img::Mono::clock_n0, Img::Mono::clock_n0Width, Img::Mono::clock_n0Height));
-    this->_numBitmapList.add(new hsbs::BitmapMono(Img::Mono::clock_n1, Img::Mono::clock_n1Width, Img::Mono::clock_n1Height));
-    this->_numBitmapList.add(new hsbs::BitmapMono(Img::Mono::clock_n2, Img::Mono::clock_n2Width, Img::Mono::clock_n2Height));
-    this->_numBitmapList.add(new hsbs::BitmapMono(Img::Mono::clock_n3, Img::Mono::clock_n3Width, Img::Mono::clock_n3Height));
-    this->_numBitmapList.add(new hsbs::BitmapMono(Img::Mono::clock_n4, Img::Mono::clock_n4Width, Img::Mono::clock_n4Height));
-    this->_numBitmapList.add(new hsbs::BitmapMono(Img::Mono::clock_n5, Img::Mono::clock_n5Width, Img::Mono::clock_n5Height));
-    this->_numBitmapList.add(new hsbs::BitmapMono(Img::Mono::clock_n6, Img::Mono::clock_n6Width, Img::Mono::clock_n6Height));
-    this->_numBitmapList.add(new hsbs::BitmapMono(Img::Mono::clock_n7, Img::Mono::clock_n7Width, Img::Mono::clock_n7Height));
-    this->_numBitmapList.add(new hsbs::BitmapMono(Img::Mono::clock_n8, Img::Mono::clock_n8Width, Img::Mono::clock_n8Height));
-    this->_numBitmapList.add(new hsbs::BitmapMono(Img::Mono::clock_n9, Img::Mono::clock_n9Width, Img::Mono::clock_n9Height));
+    this->_numBitmapList.add(new Img::Mono::ClockN0Bitmap());
+    this->_numBitmapList.add(new Img::Mono::ClockN1Bitmap());
+    this->_numBitmapList.add(new Img::Mono::ClockN2Bitmap());
+    this->_numBitmapList.add(new Img::Mono::ClockN3Bitmap());
+    this->_numBitmapList.add(new Img::Mono::ClockN4Bitmap());
+    this->_numBitmapList.add(new Img::Mono::ClockN5Bitmap());
+    this->_numBitmapList.add(new Img::Mono::ClockN6Bitmap());
+    this->_numBitmapList.add(new Img::Mono::ClockN7Bitmap());
+    this->_numBitmapList.add(new Img::Mono::ClockN8Bitmap());
+    this->_numBitmapList.add(new Img::Mono::ClockN9Bitmap());
 
     // 一時キャンバスを生成
     this->_canvas = new hsbs::Canvas(43, 9);

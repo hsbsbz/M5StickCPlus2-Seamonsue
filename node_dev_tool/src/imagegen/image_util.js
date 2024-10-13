@@ -11,6 +11,7 @@ async function convert565(input) {
   // 名前を抽出
   const fileName = path.basename(input);
   const name = path.basename(input).split(".").shift();
+  const className = name.replace(/(?:^|_)([a-z])/g, (_match, letter) => letter.toUpperCase());
 
   // バッファの取得
   const { data, info } = await sharp(input)
@@ -34,9 +35,12 @@ async function convert565(input) {
   return `// {{FILE_NAME}}
 const uint16_t {{NAME}}Width = {{WIDTH}};
 const uint16_t {{NAME}}Height = {{HEIGHT}};
-const unsigned short {{NAME}}[{{DATA_LENGTH}}] PROGMEM = {{{DATA}}};`
+const unsigned short {{NAME}}[{{DATA_LENGTH}}] PROGMEM = {{{DATA}}};
+class {{CLASS_NAME}}Bitmap : public hsbs::Bitmap565 { public: {{CLASS_NAME}}Bitmap(): hsbs::Bitmap565({{NAME}}, {{NAME}}Width, {{NAME}}Height) {} };
+`
     .split('{{FILE_NAME}}').join(fileName)
     .split('{{NAME}}').join(name)
+    .split('{{CLASS_NAME}}').join(className)
     .split('{{WIDTH}}').join(info.width)
     .split('{{HEIGHT}}').join(info.height)
     .split('{{DATA_LENGTH}}').join(res.length)
@@ -53,6 +57,7 @@ async function convertMono(input) {
   // 名前を抽出
   const fileName = path.basename(input);
   const name = path.basename(input).split(".").shift();
+  const className = name.replace(/(?:^|_)([a-z])/g, (_match, letter) => letter.toUpperCase());
 
   // バッファの取得
   const { data, info } = await sharp(input)
@@ -81,9 +86,12 @@ async function convertMono(input) {
   return `// {{FILE_NAME}}
 const uint16_t {{NAME}}Width = {{WIDTH}};
 const uint16_t {{NAME}}Height = {{HEIGHT}};
-const uint8_t {{NAME}}[{{DATA_LENGTH}}] PROGMEM = {{{DATA}}};`
+const uint8_t {{NAME}}[{{DATA_LENGTH}}] PROGMEM = {{{DATA}}};
+class {{CLASS_NAME}}Bitmap : public hsbs::BitmapMono { public: {{CLASS_NAME}}Bitmap(): hsbs::BitmapMono({{NAME}}, {{NAME}}Width, {{NAME}}Height) {} };
+`
     .split('{{FILE_NAME}}').join(fileName)
     .split('{{NAME}}').join(name)
+    .split('{{CLASS_NAME}}').join(className)
     .split('{{WIDTH}}').join(width)
     .split('{{HEIGHT}}').join(height)
     .split('{{DATA_LENGTH}}').join(res.length)
@@ -104,6 +112,8 @@ async function createImageProgmem(params) {
     '',
     '#include <pgmspace.h>',
     '#include <stdint.h>',
+    '#include "hsbs/display/BitmapMono.h"',
+    '#include "hsbs/display/Bitmap565.h"',
     '',
     'namespace Img {',
     ''

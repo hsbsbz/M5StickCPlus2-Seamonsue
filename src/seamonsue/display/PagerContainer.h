@@ -31,8 +31,8 @@ public:
     x -= (total * space) >> 1;
     for (int i = 0; i < total; i++) {
       hsbs::BitmapMono *bitmap = (i == (page - 1))
-                                     ? (new hsbs::BitmapMono(Img::Mono::info_page_act, Img::Mono::info_page_actWidth, Img::Mono::info_page_actHeight))
-                                     : (new hsbs::BitmapMono(Img::Mono::info_page, Img::Mono::info_pageWidth, Img::Mono::info_pageHeight));
+                                     ? static_cast<hsbs::BitmapMono*>(new Img::Mono::InfoPageActBitmap())
+                                     : static_cast<hsbs::BitmapMono*>(new Img::Mono::InfoPageBitmap());
       bitmap->setPosition(x, 28);
       this->addChild(bitmap);
       this->_bitmapList.add(bitmap);

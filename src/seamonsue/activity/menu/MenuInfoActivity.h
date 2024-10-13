@@ -3,7 +3,6 @@
 
 #include "../../../image_progmem.h"
 #include "../../global.h"
-#include "hsbs/display/Bitmap565.h"
 #include "../SeamonsueActivity.h"
 
 namespace seamonsue {
@@ -13,7 +12,7 @@ private:
   //------------------------------
   // Private
   //------------------------------
-  hsbs::Bitmap565 *_bitmap;
+  Img::Rgb565::IconInfoBitmap *_bitmap;
 
 protected:
   //------------------------------
@@ -23,7 +22,7 @@ protected:
    * アクティブ時
    */
   void onActive() override {
-    this->_bitmap = new hsbs::Bitmap565(Img::Rgb565::icon_info, Img::Rgb565::icon_infoWidth, Img::Rgb565::icon_infoHeight);
+    this->_bitmap = new Img::Rgb565::IconInfoBitmap();
     this->_bitmap->setPosition(3, 36);
     this->stage.addChild(this->_bitmap);
   }

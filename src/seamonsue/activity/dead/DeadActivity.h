@@ -28,7 +28,7 @@ protected:
    * アクティブ時
    */
   void onActive() override {
-    this->_bitmap = new hsbs::BitmapMono(Img::Mono::rip, Img::Mono::ripWidth, Img::Mono::ripHeight);
+    this->_bitmap = new Img::Mono::RipBitmap();
     this->_bitmap->setPosition(21 - (Img::Mono::ripWidth >> 1), 8);
     this->dotStage.addChild(this->_bitmap);
   }

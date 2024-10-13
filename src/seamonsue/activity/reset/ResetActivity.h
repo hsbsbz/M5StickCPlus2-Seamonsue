@@ -3,9 +3,9 @@
 
 #include "../../../image_progmem.h"
 #include "../../global.h"
+#include "../SeamonsueActivity.h"
 #include "hsbs/display/BitmapMono.h"
 #include "hsbs/tween/Ease.h"
-#include "../SeamonsueActivity.h"
 
 namespace seamonsue {
 
@@ -35,7 +35,7 @@ protected:
   void onActive() override {
     this->_selectedIndex = 0;
     // Reset?
-    this->_resetLabelBitmap = new hsbs::BitmapMono(Img::Mono::reset_label, Img::Mono::reset_labelWidth, Img::Mono::reset_labelHeight);
+    this->_resetLabelBitmap = new Img::Mono::ResetLabelBitmap();
     this->_resetLabelBitmap->setPosition(0, 2);
     this->dotStage.addChild(this->_resetLabelBitmap);
     if (petStore.isDead()) {
@@ -43,33 +43,33 @@ protected:
     }
 
     // yes0
-    this->_faceBitmap0 = new hsbs::BitmapMono(Img::Mono::reset_face0, Img::Mono::reset_face0Width, Img::Mono::reset_face0Height);
+    this->_faceBitmap0 = new Img::Mono::ResetFace0Bitmap();
     this->_faceBitmap0->setPosition(28, 2);
     this->dotStage.addChild(this->_faceBitmap0);
     // yes1
-    this->_faceBitmap1 = new hsbs::BitmapMono(Img::Mono::reset_face1, Img::Mono::reset_face1Width, Img::Mono::reset_face1Height);
+    this->_faceBitmap1 = new Img::Mono::ResetFace1Bitmap();
     this->_faceBitmap1->setPosition(this->_faceBitmap0->x, this->_faceBitmap0->y);
     this->dotStage.addChild(this->_faceBitmap1);
 
     // yes0
-    this->_resetYesBitmap0 = new hsbs::BitmapMono(Img::Mono::reset_yes0, Img::Mono::reset_yes0Width, Img::Mono::reset_yes0Height);
+    this->_resetYesBitmap0 = new Img::Mono::ResetYes0Bitmap();
     this->_resetYesBitmap0->setPosition(3, 22);
     this->dotStage.addChild(this->_resetYesBitmap0);
     // yes1
-    this->_resetYesBitmap1 = new hsbs::BitmapMono(Img::Mono::reset_yes1, Img::Mono::reset_yes1Width, Img::Mono::reset_yes1Height);
+    this->_resetYesBitmap1 = new Img::Mono::ResetYes1Bitmap();
     this->_resetYesBitmap1->setPosition(this->_resetYesBitmap0->x, this->_resetYesBitmap0->y);
     this->dotStage.addChild(this->_resetYesBitmap1);
 
     // no0
-    this->_resetNoBitmap0 = new hsbs::BitmapMono(Img::Mono::reset_no0, Img::Mono::reset_no0Width, Img::Mono::reset_no0Height);
+    this->_resetNoBitmap0 = new Img::Mono::ResetNo0Bitmap();
     this->_resetNoBitmap0->setPosition(23, 22);
     this->dotStage.addChild(this->_resetNoBitmap0);
     // no1
-    this->_resetNoBitmap1 = new hsbs::BitmapMono(Img::Mono::reset_no1, Img::Mono::reset_no1Width, Img::Mono::reset_no1Height);
+    this->_resetNoBitmap1 = new Img::Mono::ResetNo1Bitmap();
     this->_resetNoBitmap1->setPosition(this->_resetNoBitmap0->x, this->_resetNoBitmap0->y);
     this->dotStage.addChild(this->_resetNoBitmap1);
     // outline
-    this->_outlineBitmap = new hsbs::BitmapMono(Img::Mono::reset_outline, Img::Mono::reset_outlineWidth, Img::Mono::reset_outlineHeight);
+    this->_outlineBitmap = new Img::Mono::ResetOutlineBitmap();
     this->dotStage.addChild(this->_outlineBitmap);
   }
 

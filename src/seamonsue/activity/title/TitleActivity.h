@@ -36,7 +36,7 @@ protected:
    */
   void onActive() override {
     // タイトル画像
-    this->_bitmap = new hsbs::BitmapMono(Img::Mono::title, Img::Mono::titleWidth, Img::Mono::titleHeight);
+    this->_bitmap = new Img::Mono::TitleBitmap();
     this->_bitmap->setPosition(120, -56)->setScale(2, 2)->setAnchor(Img::Mono::titleWidth >> 1, Img::Mono::titleHeight >> 1);
     this->stage.addChild(this->_bitmap);
 

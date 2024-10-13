@@ -38,11 +38,11 @@ public:
     int y1 = 3;
     int y2 = 16;
 
-    this->_gameBitmap = new hsbs::BitmapMono(Img::Mono::info_game, Img::Mono::info_gameWidth, Img::Mono::info_gameHeight);
+    this->_gameBitmap = new Img::Mono::InfoGameBitmap();
     this->_gameBitmap->setPosition(x1, y1);
     this->dotStage.addChild(this->_gameBitmap);
 
-    this->_gameDotBitmap = new hsbs::BitmapMono(Img::Mono::info_dot, Img::Mono::info_dotWidth, Img::Mono::info_dotHeight);
+    this->_gameDotBitmap = new Img::Mono::InfoDotBitmap();
     this->_gameDotBitmap->setPosition(x2, y1 + 5);
     this->dotStage.addChild(this->_gameDotBitmap);
 
@@ -50,11 +50,11 @@ public:
     this->_gameValueBitmap->setValue(std::ceil(petStore.getPleasanty()))->setPosition(x3, y1);
     this->dotStage.addChild(this->_gameValueBitmap);
 
-    this->_cleanBitmap = new hsbs::BitmapMono(Img::Mono::info_clean, Img::Mono::info_cleanWidth, Img::Mono::info_cleanHeight);
+    this->_cleanBitmap = new Img::Mono::InfoCleanBitmap();
     this->_cleanBitmap->setPosition(x1, y2);
     this->dotStage.addChild(this->_cleanBitmap);
 
-    this->_cleanDotBitmap = new hsbs::BitmapMono(Img::Mono::info_dot, Img::Mono::info_dotWidth, Img::Mono::info_dotHeight);
+    this->_cleanDotBitmap = new Img::Mono::InfoDotBitmap();
     this->_cleanDotBitmap->setPosition(x2, y2 + 5);
     this->dotStage.addChild(this->_cleanDotBitmap);
 
