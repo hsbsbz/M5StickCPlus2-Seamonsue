@@ -26,8 +26,8 @@ public:
    * @brief コンストラクタ
    */
   PagerContainer(int total, int page) {
-    int space = 3;
-    int x = 21;
+    int space = 5;
+    int x = 22;
     x -= (total * space) >> 1;
     for (int i = 0; i < total; i++) {
       hsbs::BitmapMono *bitmap = (i == (page - 1))

@@ -37,7 +37,7 @@ protected:
   void onActive() override {
     // モンス画像
     this->_monsBitmap = new MonsBitmap();
-    this->_monsBitmap->setPosition(21, 33);
+    this->_monsBitmap->setPosition(21, 34);
     this->dotStage.addChild(this->_monsBitmap);
     this->_monsBitmap->update();
     // ブラシ画像
@@ -46,10 +46,10 @@ protected:
     this->dotStage.addChild(this->_broomBitmap);
     // トランジション
     this->activeTransition.add(
-        this->activeTransition.tween(800, hsbs::Ease::IN_SINE)->add(&this->_monsBitmap->y, 33, -3),
+        this->activeTransition.tween(800, hsbs::Ease::IN_SINE)->add(&this->_monsBitmap->y, 34, -3),
         this->activeTransition.callback([this]() { soundUtil.clean(); }),
         this->activeTransition.tween(3000, hsbs::Ease::LINEAR)->add(&this->_broomBitmap->x, -23, 52),
-        this->activeTransition.tween(800, hsbs::Ease::IN_OUT_CUBIC)->add(&this->_monsBitmap->y, -3 , 33),
+        this->activeTransition.tween(800, hsbs::Ease::IN_OUT_CUBIC)->add(&this->_monsBitmap->y, -3 , 34),
         this->activeTransition.callback([this]() {
           petStore.execClean();
         }));

@@ -318,6 +318,12 @@ const uint16_t clock_n9Height = 9;
 const uint8_t clock_n9[9] PROGMEM = {0x81, 0x3C, 0x3C, 0x3C, 0x80, 0xFC, 0xFC, 0x3C, 0x81};
 class ClockN9Bitmap : public hsbs::BitmapMono { public: ClockN9Bitmap(): hsbs::BitmapMono(clock_n9, clock_n9Width, clock_n9Height) {} };
 
+// d.png
+const uint16_t dWidth = 3;
+const uint16_t dHeight = 3;
+const uint8_t d[3] PROGMEM = {0x00, 0x40, 0x00};
+class DBitmap : public hsbs::BitmapMono { public: DBitmap(): hsbs::BitmapMono(d, dWidth, dHeight) {} };
+
 // dirty1.png
 const uint16_t dirty1Width = 13;
 const uint16_t dirty1Height = 13;
@@ -501,7 +507,7 @@ class InfoGameBitmap : public hsbs::BitmapMono { public: InfoGameBitmap(): hsbs:
 // info_page.png
 const uint16_t info_pageWidth = 3;
 const uint16_t info_pageHeight = 3;
-const uint8_t info_page[3] PROGMEM = {0xE0, 0xA0, 0xE0};
+const uint8_t info_page[3] PROGMEM = {0xA0, 0x40, 0xA0};
 class InfoPageBitmap : public hsbs::BitmapMono { public: InfoPageBitmap(): hsbs::BitmapMono(info_page, info_pageWidth, info_pageHeight) {} };
 
 // info_page_act.png

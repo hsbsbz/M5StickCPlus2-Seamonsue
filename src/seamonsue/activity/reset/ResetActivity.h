@@ -36,7 +36,7 @@ protected:
     this->_selectedIndex = 0;
     // Reset?
     this->_resetLabelBitmap = new Img::Mono::ResetLabelBitmap();
-    this->_resetLabelBitmap->setPosition(0, 2);
+    this->_resetLabelBitmap->setPosition(0, 4);
     this->dotStage.addChild(this->_resetLabelBitmap);
     if (petStore.isDead()) {
       this->_resetLabelBitmap->x += 9;
@@ -44,7 +44,7 @@ protected:
 
     // yes0
     this->_faceBitmap0 = new Img::Mono::ResetFace0Bitmap();
-    this->_faceBitmap0->setPosition(28, 2);
+    this->_faceBitmap0->setPosition(28, 4);
     this->dotStage.addChild(this->_faceBitmap0);
     // yes1
     this->_faceBitmap1 = new Img::Mono::ResetFace1Bitmap();
@@ -53,7 +53,7 @@ protected:
 
     // yes0
     this->_resetYesBitmap0 = new Img::Mono::ResetYes0Bitmap();
-    this->_resetYesBitmap0->setPosition(3, 22);
+    this->_resetYesBitmap0->setPosition(3, 24);
     this->dotStage.addChild(this->_resetYesBitmap0);
     // yes1
     this->_resetYesBitmap1 = new Img::Mono::ResetYes1Bitmap();
@@ -62,7 +62,7 @@ protected:
 
     // no0
     this->_resetNoBitmap0 = new Img::Mono::ResetNo0Bitmap();
-    this->_resetNoBitmap0->setPosition(23, 22);
+    this->_resetNoBitmap0->setPosition(23, 24);
     this->dotStage.addChild(this->_resetNoBitmap0);
     // no1
     this->_resetNoBitmap1 = new Img::Mono::ResetNo1Bitmap();

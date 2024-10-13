@@ -36,7 +36,7 @@ public:
     int x3 = 28;
 
     int y1 = 3;
-    int y2 = 16;
+    int y2 = 15;
 
     this->_gameBitmap = new Img::Mono::InfoGameBitmap();
     this->_gameBitmap->setPosition(x1, y1);

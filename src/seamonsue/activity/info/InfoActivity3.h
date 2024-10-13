@@ -29,7 +29,7 @@ public:
   void onActive() override {
 
     this->_label = new Img::Mono::InfoFavBitmap();
-    this->_label->setPosition(5, 4);
+    this->_label->setPosition(5, 5);
     this->dotStage.addChild(this->_label);
 
     this->_pager = new PagerContainer(3, 3);
@@ -37,12 +37,12 @@ public:
 
     MonsPersonalityData *personality = createPersonalityFromCount(petStore.getCountFood(), petStore.getCountGame(), petStore.getCountClean());
 
+    int total = 0;
+    if (personality->food > 0) ++total;
+    if (personality->game > 0) ++total;
+    if (personality->clean > 0) ++total;
 
-    Serial.println(
-       ">" + String(personality->food) + " " + String(personality->game) + " " + String(personality->clean)
-    );
-
-    int space = 3;
+    int space = total == 3 ? 3 : 6;
     int x = 0;
     int y = 14;
     if (personality->food > 0) {
@@ -73,7 +73,7 @@ public:
     int length = this->_bitmapList.length();
     for (int i = 0; i < length; i++) {
       hsbs::BitmapMono *bitmap =  this->_bitmapList.getAt(i);
-      bitmap->x += 21;
+      bitmap->x += 22;
       bitmap->x -= (x >> 1);
     }
 

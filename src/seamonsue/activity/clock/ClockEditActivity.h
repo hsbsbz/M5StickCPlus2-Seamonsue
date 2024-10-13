@@ -74,12 +74,12 @@ protected:
     float direction = accel > 0 ? 1 : -1;
 
     // ３段階のスピード変更
-    if (absAccel > 0.5) {
+    if (absAccel > 0.6) {
       timeStore.appendClockSec(direction * S_MINUTE * 10);
-    } else if (absAccel > 0.35) {
-      timeStore.appendClockSec(direction * S_MINUTE * 0.75);
+    } else if (absAccel > 0.4) {
+      timeStore.appendClockSec(direction * S_MINUTE * 0.5);
     } else if (absAccel > 0.2) {
-      timeStore.appendClockSec(direction * S_MINUTE * 0.15);
+      timeStore.appendClockSec(direction * S_MINUTE * 0.1);
     }
 
     // 編集中のテキストを点滅させる

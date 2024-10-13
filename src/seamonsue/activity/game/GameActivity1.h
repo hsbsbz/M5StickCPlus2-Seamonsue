@@ -61,17 +61,17 @@ protected:
     // 1
     this->_countDownBitmap1 = new Img::Mono::GameN1Bitmap();
     this->_countDownBitmap1->visible = false;
-    this->dotStage.addChild(this->_countDownBitmap1->setPosition(12, 5));
+    this->dotStage.addChild(this->_countDownBitmap1->setPosition(13, 5));
 
     // 2
     this->_countDownBitmap2 = new Img::Mono::GameN2Bitmap();
     this->_countDownBitmap2->visible = false;
-    this->dotStage.addChild(this->_countDownBitmap2->setPosition(12, 5));
+    this->dotStage.addChild(this->_countDownBitmap2->setPosition(13, 5));
 
     // 3
     this->_countDownBitmap3 = new Img::Mono::GameN3Bitmap();
     this->_countDownBitmap3->visible = false;
-    this->dotStage.addChild(this->_countDownBitmap3->setPosition(12, 5));
+    this->dotStage.addChild(this->_countDownBitmap3->setPosition(13, 5));
 
     // トランジション
     this->activeTransition.add(

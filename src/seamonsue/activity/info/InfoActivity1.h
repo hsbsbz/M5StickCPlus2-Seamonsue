@@ -39,10 +39,10 @@ protected:
     int x3 = 28;
 
     int y1 = 3;
-    int y2 = 16;
+    int y2 = 15;
 
     this->_ageBitmap = new Img::Mono::InfoAgeBitmap();
-    this->_ageBitmap->setPosition(x1 - 2, y1 + 3);
+    this->_ageBitmap->setPosition(x1 - 2, y1 + 2);
     this->dotStage.addChild(this->_ageBitmap);
 
     this->_ageDotBitmap = new Img::Mono::InfoDotBitmap();
@@ -51,13 +51,13 @@ protected:
 
     int age = timeStore.getTotalSec() / 86400; // 86400 は １日分の秒
     String ageStr = String(age);
-    this->_ageCanvas = new hsbs::Canvas(12, 8);
+    this->_ageCanvas = new hsbs::Canvas(12, 7);
     this->_ageCanvas->transparentColor = TFT_WHITE;
     this->_ageCanvas->canvas.fillScreen(TFT_WHITE);
     this->_ageCanvas->canvas.setTextColor(0);
-    this->_ageCanvas->setPosition(x3 + 6, y1 + 2);
+    this->_ageCanvas->setPosition(x3 + 6, y1 + 1);
     this->_ageCanvas->canvas.print(ageStr);
-    this->_ageCanvas->x -= (this->_ageCanvas->canvas.textWidth(ageStr) >> 1);
+    this->_ageCanvas->x -= this->_ageCanvas->canvas.textWidth(ageStr) >> 1;
     this->dotStage.addChild(this->_ageCanvas);
 
     this->_foodBitmap = new Img::Mono::InfoFoodBitmap();

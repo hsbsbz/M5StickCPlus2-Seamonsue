@@ -39,6 +39,7 @@ protected:
   int value = 0;
   float playerVelocity = 0;
   int waitCount = 0;
+  int fishConsecutiveCount = 0;
 
 public:
   //------------------------------
@@ -48,7 +49,7 @@ public:
    * @brief コンストラクタ
    */
   GameContainer() {
-    this->_playerRect = new hsbs::Rectangle((maxWidth - Img::Mono::game_player0Width) >> 1, maxHeight - Img::Mono::game_player0Height, Img::Mono::game_player0Width, Img::Mono::game_player0Height);
+    this->_playerRect = new hsbs::Rectangle(((maxWidth - Img::Mono::game_player0Width) >> 1) + 1, maxHeight - Img::Mono::game_player0Height, Img::Mono::game_player0Width, Img::Mono::game_player0Height);
 
     this->_fishBitmap = new Img::Mono::GameFishBitmap();
     this->_fishBitmap->setScale(4, 4);
@@ -125,16 +126,18 @@ public:
 
     // プレイヤーの位置を更新
     int xMax = maxWidth - Img::Mono::game_player0Width;
-    this->playerVelocity = data.accel.y * 15;
+    this->playerVelocity = data.accel.y * 12;
     this->_playerRect->x += this->playerVelocity;
     this->_playerRect->x = this->_playerRect->x < 0 ? 0 : this->_playerRect->x;
     this->_playerRect->x = this->_playerRect->x > xMax ? xMax : this->_playerRect->x;
 
     // 一定の間隔で、魚かハートを追加
     if (globalTicker.checkInterval(1300)) {
-      if (random(0, 3) == 0) {
+      if (random(0, 3) == 0 || (this->fishConsecutiveCount >= 3)) {// 乱数の偏りで魚だけ出るのウザいから３連続で回避
+        this->fishConsecutiveCount = 0;
         this->_heartList.push(new hsbs::Rectangle(random(0, maxWidth - Img::Mono::game_heart0Width), -Img::Mono::game_heart0Height, Img::Mono::game_heart0Width, Img::Mono::game_heart0Height));
       } else {
+        ++this->fishConsecutiveCount;
         this->_fishList.push(new hsbs::Rectangle(random(0, maxWidth - Img::Mono::game_fishWidth), -Img::Mono::game_fishHeight, Img::Mono::game_fishWidth, Img::Mono::game_fishHeight));
       }
     }
