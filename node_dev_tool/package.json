@@ -1,20 +1,18 @@
 {
-  "name": "seamonsue_node_dev_tool",
-  "version": "1.0.0",
-  "description": "Seamonsue の開発時に使用するツールなど。",
-  "main": "src/chckfile.js",
-  "license": "MIT",
-  "private": true,
-  "scripts": {
-    "checkfile": "node ./src/checkfile/main.js",
-    "img": "node ./src/imagegen/main.js ./img/ ../src/",
-    "doc:hsbslib": "cd ../doc/hsbslib && doxygen ../../lib/hsbslib/Doxyfile",
-    "doc:seamonsue": "cd ../src/ && doxygen ../../lib/seamonsue/Doxyfile",
-    "arduino": "node ./src/copy_to_arduino/main.js"
-  },
-  "devDependencies": {
-    "@img/sharp-win32-x64": "^0.33.2",
-    "archiver": "^7.0.1",
-    "sharp": "^0.33.2"
-  }
+    "name": "seamonsue_node_dev_tool",
+    "version": "1.0.0",
+    "description": "development tool for Seamonsue",
+    "main": "src/chckfile.js",
+    "license": "MIT",
+    "scripts": {
+        "checkfile": "node ./src/checkfile/main.js",
+        "img": "node ./src/imagegen/main.js ./img/ ../src/",
+        "arduino": "node ./src/copy_to_arduino/main.js",
+        "doc:hsbslib": "cd ../doc/hsbslib && doxygen ../../lib/hsbslib/Doxyfile",
+        "doc:seamonsue": "cd ../src/ && doxygen ../../lib/seamonsue/Doxyfile"
+    },
+    "devDependencies": {
+        "archiver": "^7.0.1",
+        "sharp": "^0.33.5"
+    }
 }

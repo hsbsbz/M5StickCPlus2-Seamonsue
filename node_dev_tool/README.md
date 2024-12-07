@@ -1,27 +1,28 @@
 
 
-# 開発時に使用するツールなど
+# Tools used during development
+use node as a development tool.
 
 ## node version
-`20.11.0`
+`22.12.0`
 
 ## install
-`npm install`
+```bash
+npm install
+```
 
-### Windows は sharp が動作しなかったので @img/sharp-win32-x64 を入れた。
-`npm install --force @img/sharp-win32-x64`
+## Check header macro naming conventions and missing virtual destructors
+```bash
+npm run checkfile
+```
 
-### スクリプト
+## Bitmap Image Encoding
+```bash
+npm run img
+```
 
-#### ヘッダーのマクロの命名規則チェック、デストラクタの virtual 抜けチェック
-`npm run checkfile`
-
-
-#### ビットマップ画像のコード化
-`npm run img`
-画像のヘッダーソース化に sharp を使用。
-
-
-#### Arduino 用に書き出し
-`npm run arduino`
+## Export for Arduino
+```bash
+npm run arduino
+```
 
